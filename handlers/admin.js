@@ -10,6 +10,9 @@ function add(req, res, next){
 function update(req, res, next){
 	// var body = req.body;
 	// Admin.findOneAndUpdate({login: body.login}, body).then(function(err, admin){
+	// 	if(err){
+	// 		return next(err)
+	// 	}
 	// res.send(admin);
 	// });
 	res.send('updated');
@@ -17,6 +20,9 @@ function update(req, res, next){
 
 function remove(req, res, next){
 	// Admin.findOneAndRemove(req.query).then(function(err, admin){
+	// 	if(err){
+	// 		return next(err);
+	// 	}
 	// res.send(admin);
 	// });
 	res.send('removed');

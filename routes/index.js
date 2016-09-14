@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express();
-var user = require('./user');
+var users = require('./users');
 var admin = require('./admin');
-var event = require('./event');
-var session = require('./session');
-var errorHandler = require('../handlers/errorHandler');
+var events = require('./events');
+var sessions = require('./sessions');
+var errorHandler = require('../handlers/error');
 
 require('../helpers/dbConnection');
 
@@ -16,10 +16,13 @@ router.post('/', function(req, res, next){
 	console.log(req.body);
 })
 
-router.use('/user', user);
+router.use('/users', users);
+
 router.use('/admin', admin);
-router.use('/event', event);
-router.use('/session', session);
+
+router.use('/events', events);
+
+router.use('/sessions', sessions);
 
 router.use('/', function(req, res, next) {
   var err = new Error('Not Found');
