@@ -1,5 +1,5 @@
 var express = require('express');
-var router = express.Router();
+var router = express();
 var user = require('./user');
 var admin = require('./admin');
 var event = require('./event');
@@ -12,6 +12,9 @@ require('../helpers/dbConnection');
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
+router.post('/', function(req, res, next){
+	console.log(req.body);
+})
 
 router.use('/user', user);
 router.use('/admin', admin);
