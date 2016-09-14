@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var user = require('./users');
+var user = require('./user');
 var admin = require('./admin');
 var event = require('./event');
 var session = require('./session');
+var errorHandler = require('../handlers/errorHandler');
 
 require('../helpers/dbConnection');
 
@@ -17,5 +18,10 @@ router.use('/admin', admin);
 router.use('/event', event);
 router.use('/session', session);
 
+router.use('/', function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+}, errorHandler);
 
 module.exports = router;
