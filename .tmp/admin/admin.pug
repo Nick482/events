@@ -1,5 +1,4 @@
 
-doctype html
 html
   head
     base(href='/')
@@ -14,7 +13,7 @@ html
     // endbower
     // endbuild
     // build:css({.tmp,src}) styles/app.css
-    link(rel='stylesheet', href='app/app.css')
+    link(rel='stylesheet', href='admin/admin.css')
     // endbuild
   body(ng-app='app')
     ui-view
@@ -30,9 +29,6 @@ html
     // endbuild
     // build:js({.tmp,src}) scripts/app.js
     // inject:js
-    script(src='app/app.js')
-    script(src='app/home/home.controller.js')
-    script(src='app/home/home.component.js')
-    script(src='app/routes.js')
+    script(src='admin/admin.js')
     // endinject
     // endbuild

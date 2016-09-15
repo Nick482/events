@@ -1,3 +1,4 @@
-angular
-  .module('app', ['ui.router']);
-console.log('here');
+(function(){
+	angular
+  	.module('app', ['ui.router']);
+})()

@@ -20,21 +20,23 @@ function inject() {
   ])
   .pipe(angularFilesort()).on('error', conf.errorHandler('AngularFilesort'));
 
-  // const injectAdminScripts = gulp.src([
-  //   conf.path.tmp('admin/**/*.js'),
-  //   `!${conf.path.tmp('**/*.spec.js')}`
-  // ])
-  // .pipe(angularFilesort()).on('error', conf.errorHandler('AngularFilesort'));
+  const injectAdminScripts = gulp.src([
+    conf.path.tmp('admin/**/*.js'),
+    `!${conf.path.tmp('**/*.spec.js')}`
+  ])
+  .pipe(angularFilesort()).on('error', conf.errorHandler('AngularFilesort'));
 
   const injectOptions = {
     ignorePath: [conf.paths.src, conf.paths.tmp],
     addRootSlash: false
   };
 
-  // gulp.src(conf.path.src('admin/admin.pug'), {base: './src'})
-  //   .pipe(gulpInject(injectAdminScripts, injectOptions))
-  //   .pipe(wiredep(Object.assign({}, conf.wiredep)))
-  //   .pipe(gulp.dest(conf.path.tmp()))
+  gulp.src(conf.path.src('admin/admin.pug'), {base: './src'})
+    .pipe(pug())  
+    .pipe(gulpInject(injectAdminScripts, injectOptions))
+    .pipe(wiredep(Object.assign({}, conf.wiredep)))
+    .pipe(html2pug())
+    .pipe(gulp.dest(conf.path.tmp()))
 
   return gulp.src(conf.path.src('app/app.pug'), {base: './src'})
     .pipe(pug())

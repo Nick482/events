@@ -1,2 +1,4 @@
-angular
-	.module('app.admin', ['ui.router']);
+(function(){
+	angular
+		.module('app.admin', ['ui.router']);
+})()
