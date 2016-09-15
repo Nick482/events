@@ -4,7 +4,7 @@ html
   head
     base(href='/')
     meta(charset='utf-8')
-    title FountainJS
+    title Events
     meta(name='description', content='')
     meta(name='viewport', content='width=device-width')
     link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
@@ -17,16 +17,17 @@ html
     link(rel='stylesheet', href='app/app.css')
     // endbuild
   body(ng-app='app')
-    .container
-      menu
+    .container(layout='column')
+      menu(flex='100')
       ui-view
-      footer
+      footer(flex='100')
     script(src='../../angular/angular.js')
     script(src='../../angular-ui-router/release/angular-ui-router.js')
     script(src='../../angular-animate/angular-animate.js')
     script(src='../../angular-aria/angular-aria.js')
     script(src='../../angular-messages/angular-messages.js')
     script(src='../../angular-material/angular-material.js')
+    script(src='../../spin.js/spin.js')
     // endbower
     // endbuild
     // build:js({.tmp,src}) scripts/app.js
