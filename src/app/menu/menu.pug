@@ -1,9 +1,17 @@
-.menu
-	md-menu
+.menu(layout='row' layout-align='space-between center')
+	.logo
+		img.logo-img(src='/app/common/img/events_logo.png')
+
+	md-menu.hide.show-xs
 		md-button(aria-label='Open menu' class='md-icon-button' ng-click='vm.openMenu($mdOpenMenu, $event)')
 			<i class='material-icons'>menu</i>
 		md-menu-content(width='4')
 			md-menu-item
-				p {{vm.menuLine}}
+				md-button(aria-label='' flex='100' ng-click='vm.goTo("home")') {{vm.menuLine}}
 			md-menu-item
-				a(href='./admin') Onward, To the Admin Page!
+				md-button(aria-label='' flex='100' ng-click='vm.goTo("search")') I'm here too
+	.large-menu.hide-xs(flex='40' layout='row')
+		md-button(aria-label='' flex='100' ng-click='vm.goTo("home")') {{vm.menuLine}}
+		md-button(aria-label='' flex='100' ng-click='vm.goTo("search")') {{vm.menuLine}}
+		md-button(aria-label='' flex='100' ng-click='vm.goTo("about")') {{vm.menuLine}}
+		md-button(aria-label='' flex='100' ng-click='vm.goTo("contact")') {{vm.menuLine}}

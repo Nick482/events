@@ -8,9 +8,13 @@
 		var vm = this;
 	    var originatorEv;
 
-	    this.openMenu = function($mdOpenMenu, ev) {
+	    vm.openMenu = function($mdOpenMenu, ev) {
 	      $mdOpenMenu(ev);
 	    };
+
+	    vm.goTo = function(dest){
+	    	console.log('Went to ' + dest);
+	    }
 
 		vm.menuLine = 'Blowfeld, here you are..'
 	}
