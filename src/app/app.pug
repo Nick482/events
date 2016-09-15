@@ -5,7 +5,7 @@ head
   title FountainJS
   meta(name='description' content='')
   meta(name='viewport' content='width=device-width')
-  link(rel='icon' type='image/png' href='http://fountainjs.io/assets/imgs/fountain.png')
+  link(href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet')
   // build:css({.tmp,src}) styles/vendor.css
   // bower:css
   // run `gulp inject` to automatically populate bower styles dependencies
@@ -15,7 +15,10 @@ head
   link(rel='stylesheet' href='app/app.css')
   // endbuild
 body(ng-app="app")
-ui-view
+  .container
+    menu
+    ui-view
+    footer
 // build:js({.tmp,src}) scripts/vendor.js
 // bower:js
 // run `gulp inject` to automatically populate bower script dependencies

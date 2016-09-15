@@ -6,6 +6,6 @@
 	function homeCtrl(){
 		var vm = this;
 
-		vm.hero = 'J';
+		vm.hero = 'Bond';
 	}
 })();

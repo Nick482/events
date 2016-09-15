@@ -7,7 +7,7 @@ html
     title FountainJS
     meta(name='description', content='')
     meta(name='viewport', content='width=device-width')
-    link(rel='icon', type='image/png', href='http://fountainjs.io/assets/imgs/fountain.png')
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
     // build:css({.tmp,src}) styles/vendor.css
     // bower:css
     link(rel='stylesheet', href='../../angular-material/angular-material.css')
@@ -17,9 +17,10 @@ html
     link(rel='stylesheet', href='app/app.css')
     // endbuild
   body(ng-app='app')
-    ui-view
-    // build:js({.tmp,src}) scripts/vendor.js
-    // bower:js
+    .container
+      menu
+      ui-view
+      footer
     script(src='../../angular/angular.js')
     script(src='../../angular-ui-router/release/angular-ui-router.js')
     script(src='../../angular-animate/angular-animate.js')
@@ -31,8 +32,14 @@ html
     // build:js({.tmp,src}) scripts/app.js
     // inject:js
     script(src='app/app.js')
+    script(src='app/menu/menu.controller.js')
+    script(src='app/menu/menu.component.js')
     script(src='app/home/home.controller.js')
     script(src='app/home/home.component.js')
+    script(src='app/footer/footer.controller.js')
+    script(src='app/footer/footer.component.js')
     script(src='app/routes.js')
     // endinject
     // endbuild
+  // build:js({.tmp,src}) scripts/vendor.js
+  // bower:js

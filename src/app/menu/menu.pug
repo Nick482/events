@@ -1,0 +1,9 @@
+.menu
+	md-menu
+		md-button(aria-label='Open menu' class='md-icon-button' ng-click='vm.openMenu($mdOpenMenu, $event)')
+			<i class='material-icons'>menu</i>
+		md-menu-content(width='4')
+			md-menu-item
+				p {{vm.menuLine}}
+			md-menu-item
+				a(href='./admin') Onward, To the Admin Page!
