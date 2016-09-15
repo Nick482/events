@@ -17,7 +17,7 @@ function other() {
   const fileFilter = filter(file => file.stat.isFile());
 
   return gulp.src([
-    path.join(conf.paths.src, '/**/!(*.jade)'),
+    path.join(conf.paths.src, '/**/!(*.pug)'),
     path.join(`!${conf.paths.src}`, '/**/*.{js,html,scss}')
   ])
     .pipe(fileFilter)

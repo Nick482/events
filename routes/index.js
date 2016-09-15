@@ -5,12 +5,14 @@ var admin = require('./admin');
 var events = require('./events');
 var sessions = require('./sessions');
 var errorHandler = require('../handlers/error');
+var path = require('path');
+router.set('views', path.join(__dirname, '../dist/app'));
 
 require('../helpers/dbConnection');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('app', {title: 'Express'});
 });
 router.post('/', function(req, res, next){
 	console.log(req.body);

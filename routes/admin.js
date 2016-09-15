@@ -3,7 +3,7 @@ var router = express.Router();
 var adminHandler = require('../handlers/admin');
 
 router.get('/', function(req, res, next){
-	res.send('admin page, hi');
+	res.render('admin', {title: "Express"});
 })
 
 router.post('/', adminHandler.add);
