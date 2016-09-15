@@ -16,6 +16,6 @@
 	    	console.log('Went to ' + dest);
 	    }
 
-		vm.menuLine = 'Blowfeld, here you are..'
+		vm.menuLine = 'link'
 	}
 })();
