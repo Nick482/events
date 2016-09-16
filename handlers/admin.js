@@ -2,30 +2,32 @@ var mongoose = require('mongoose');
 var Admin = require('../models/Admin');
 
 function add(req, res, next){
-	console.log(req.body);
 	var admin = new Admin(req.body);
-	res.send(admin);
+	admin.save().exec(function(err, admin){
+		if(err){
+			return next(err);
+		}
+		res.status(201);
+	})
 }
 
 function update(req, res, next){
-	// var body = req.body;
-	// Admin.findOneAndUpdate({login: body.login}, body).then(function(err, admin){
-	// 	if(err){
-	// 		return next(err)
-	// 	}
-	// res.send(admin);
-	// });
-	res.send('updated');
+	var body = req.body;
+	Admin.findOneAndUpdate({id: body.id}, body).exec(function(err, admin){
+		if(err){
+			return next(err)
+		}
+	res.status(200);
+	});
 }
 
 function remove(req, res, next){
-	// Admin.findOneAndRemove(req.query).then(function(err, admin){
-	// 	if(err){
-	// 		return next(err);
-	// 	}
-	// res.send(admin);
-	// });
-	res.send('removed');
+	Admin.findOneAndRemove({id: req.params.id}).exec(function(err, admin){
+		if(err){
+			return next(err);
+		}
+	res.send(admin);
+	});
 }
 
 module.exports = {

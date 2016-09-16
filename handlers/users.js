@@ -1,17 +1,40 @@
 var User = require('../models/User');
+var Event = require('../models/Event');
+var EventSession = require('../models/EventSession');
+
 
 function add(req, res, next) {
 	var user = new User(req.body);
-	user.save().then(function(err){
+	function saveUser(err, session){
+		user.save(function(err){
+			if(err){
+				return next(err)
+			}
+			res.status(201);
+		});
+	};
+	function updateSessions(err, event) {
+		EventSession.update({id: user.sessions}, {$push: {users: user.id}}, saveUser);
+	}
+
+	Event.findOne({id: user.event}).exec(function(err, event){
 		if(err){
-			return next(err)
+			return next(err);
 		}
-		res.status(200);
+		if(event.status > 1) {
+			event.freeSeats -=1;
+			if(event.freeSeats === 0){
+			event.status = 1;
+			}
+		} else {
+			return res.send(403);
+		}
+		event.save(updateSessions);
 	});
 }
 
 function getOne(req, res, next) {
-	User.findOne({id: req.params.id}).then(function(err, user){
+	User.findById({id: req.params.id}).populate('event eventSessions').exec(function(err, user){
 		if(err){
 			return next(err)
 		}
@@ -20,7 +43,7 @@ function getOne(req, res, next) {
 }
 
 function getAll(req, res, next) {
-	User.findAll().then(function(err, users){
+	User.find({}, function(err, users){
 		if(err){
 			return next(err)
 		}
@@ -29,7 +52,7 @@ function getAll(req, res, next) {
 }
 
 function update(req, res, next) {
-	User.findOneAndUpdate({id: req.body.id}, req.body).then(function(err, user){
+	User.findOneAndUpdate({id: req.body.id}, req.body).exec(function(err, user){
 		if(err){
 			return next(err);
 		}
@@ -38,7 +61,7 @@ function update(req, res, next) {
 }
 
 function remove(req, res, next) {
-	User.findOneAndRemove({id: req.params.id}).then(function(err, user){
+	User.findOneAndRemove({id: req.params.id}).exec(function(err, user){
 		if(err){
 			return next(err)
 		}

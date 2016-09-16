@@ -4,7 +4,7 @@
 		.module('app')
 		.controller('menuCtrl', headerCtrl);
 
-	function headerCtrl() {
+	function headerCtrl($state) {
 		var vm = this;
 	    var originatorEv;
 
@@ -13,7 +13,7 @@
 	    };
 
 	    vm.goTo = function(dest){
-	    	console.log('Went to ' + dest);
+	    	$state.go(dest);
 	    }
 
 		vm.menuLine = 'link'

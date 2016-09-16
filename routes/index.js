@@ -3,7 +3,9 @@ var router = express();
 var users = require('./users');
 var admin = require('./admin');
 var events = require('./events');
-var sessions = require('./sessions');
+var categories = require('./categories');
+var subcategories = require('./subcategories');
+var eventSessions = require('./eventSessions');
 var errorHandler = require('../handlers/error');
 var path = require('path');
 router.set('views', path.join(__dirname, '../dist/app'));
@@ -24,7 +26,11 @@ router.use('/admin', admin);
 
 router.use('/events', events);
 
-router.use('/sessions', sessions);
+router.use('/eventSessions', eventSessions);
+
+router.use('/categories', categories);
+
+router.use('/subcategories', subcategories);
 
 router.use('/', function(req, res, next) {
   var err = new Error('Not Found');

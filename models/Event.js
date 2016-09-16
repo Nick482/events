@@ -33,18 +33,26 @@ var eventSchema = new mongoose.Schema({
 		type: Number,
 		required: true
 	},
+	users: [{
+		type: mongoose.Schema.Types.ObjectId, ref: 'User'
+	}],
 	description: {
 		type: String,
 		required: true
 	},
+	image: {
+		type: String
+	},
 	category: {
-		type: String,
-		required: true
+		type: mongoose.Schema.Types.ObjectId,
+		required: true,
+		ref: 'Category'
 	},
-	subCategory: {
-		type: String,
-		required: true
-	},
+	subcategories: [{
+		type: mongoose.Schema.Types.ObjectId,
+		required: true,
+		ref: 'Subcategory'
+	}],
 	sessions: [{type: mongoose.Schema.Types.ObjectId, ref: 'Session'}]
 });
 var Event = mongoose.model('Event', eventSchema);

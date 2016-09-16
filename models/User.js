@@ -19,13 +19,13 @@ var userSchema = new mongoose.Schema({
 	company: {
 		type: String
 	},
-	events: [{
+	event: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Event'
-	}],
-	sessions: [{
+	},
+	eventSessions: [{
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Session'
+		ref: 'EventSession'
 	}]
 });
 var User = mongoose.model('User', userSchema);

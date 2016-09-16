@@ -4,16 +4,16 @@ var Event = require('../models/Event');
 function add(req, res, next) {
 	var event = new Event(req.body);
 
-	event.save().then(function(err, event){
-	if(err) {
-		return next(err)
-	}
-	res.status(200).send('Success');
+	event.save(function(err, event){
+		if(err) {
+			return next(err)
+		}
+		res.status(201);
 	});
 }
 
 function update(req, res, next) {
-	Event.findOneAndUpdate({id: req.body.id}, req.body).then(function(err, event){
+	Event.findOneAndUpdate({id: req.body.id}, req.body).exec(function(err, event){
 	if(err) {
 		return next(err)
 	}
@@ -22,7 +22,7 @@ function update(req, res, next) {
 }
 
 function getOne(req, res, next) {
-	Event.findOne({id: req.params.id}).then(function(err, event){
+	Event.findOne({id: req.params.id}).exec(function(err, event){
 	if(err) {
 		return next(err)
 	}
@@ -31,7 +31,7 @@ function getOne(req, res, next) {
 }
 
 function getAll(req, res, next) {
-	Event.findAll().then(function(err, events){
+	Event.find({}, function(err, events){
 	if(err) {
 		return next(err)
 	}
@@ -40,7 +40,7 @@ function getAll(req, res, next) {
 }
 
 function remove(req, res, next) {
-	Event.findOneAndRemove(req.query).then(function(err, event){
+	Event.findOneAndRemove(req.query).exec(function(err, event){
 	if(err) {
 		return next(err)
 	}

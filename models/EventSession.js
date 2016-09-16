@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var sessionSchema = new mongoose.Schema({
+var eventSessionSchema = new mongoose.Schema({
 	title: {
 		type: String,
 		required: true
@@ -29,8 +29,16 @@ var sessionSchema = new mongoose.Schema({
 		type: Number,
 		required: true
 	},
+	users: [{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'User'
+	}],
 	event: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Event'
 	}
-})
+});
+
+var EventSession = mongoose.model('EventSession', eventSessionSchema);
+
+module.exports = EventSession;
