@@ -4,7 +4,7 @@
 	.component('categories', {
 		templateUrl: 'app/categories/categories.html',
 		bindings: { categories: '<' },
-		controller: 'categoriesController',
+		controller: 'categoriesCtrl',
 		controllerAs: 'vm'
 	})
 })();

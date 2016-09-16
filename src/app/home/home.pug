@@ -1,2 +1,4 @@
-.home
-	p Mr {{vm.hero}}, I've been expecting you
+.home(layout='row' )
+	.top(flex='70') Mr {{vm.hero}}, I've been expecting you, your hot events are: {{vm.top}}
+	.latest(flex='30') Oddjob stands here, showing you the latest of events: {{vm.latest}}
+

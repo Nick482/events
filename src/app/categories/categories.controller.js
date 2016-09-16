@@ -1,10 +1,10 @@
 (function(){
 	angular
 	.module('app')
-	.controller('categoriesController', categoriesController);
+	.controller('categoriesCtrl', categoriesCtrl);
 
 	/** @ngInject */
-	function categoriesController(){
+	function categoriesCtrl(){
 		var vm = this;
 		// vm.categories = categories;
 

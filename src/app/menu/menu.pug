@@ -1,24 +1,34 @@
 .menu(layout='row' layout-align='space-between center')
 	.logo(ng-click='vm.goTo("home")')
 		img.logo-img(src='/app/common/img/events_logo.png')
-	.search
-		md-input-container(layout-align="center end")
+	.large-menu.hide-xs(flex='40' layout='row')
+		md-button(aria-label='' flex='100' ng-click='vm.goTo("categories")') Browse
+		md-button(aria-label='' flex='100' ng-click='vm.goTo("picker")') Picker
+		md-button(aria-label='' flex='100' ng-click='vm.goTo("about")') About Us
+		md-button(aria-label='' flex='100' ng-click='vm.goTo("contact")') Contact Us
+	.search.hide-xs(flex='40')
+		md-input-container.input-container
 			label Search
 			input(ng-model='vm.searchText')
 		md-button.md-raised Search
-	md-menu.hide.show-xs
+	md-menu.hide.show-xs.mobile-menu
 		md-button(aria-label='Open menu' class='md-icon-button' ng-click='vm.openMenu($mdOpenMenu, $event)')
 			i.material-icons menu
 		md-menu-content(width='4')
 			md-menu-item
+				.search
+					md-input-container.input-container
+						label Search
+						input(ng-model='vm.searchText')
+					md-button.search-button
+						i.material-icons search
+			md-menu-item
 				md-button(aria-label='' flex='100' ng-click='vm.goTo("home")') Home
 			md-menu-item
-				md-button(aria-label='' flex='100' ng-click='vm.goTo("categories")') Categories
+				md-button(aria-label='' flex='100' ng-click='vm.goTo("categories")') Browse
+			md-menu-item
+				md-button(aria-label='' flex='100' ng-click='vm.goTo("picker")') Picker
 			md-menu-item
 				md-button(aria-label='' flex='100' ng-click='vm.goTo("about")') About Us
 			md-menu-item
 				md-button(aria-label='' flex='100' ng-click='vm.goTo("contact")') Contact Us
-	.large-menu.hide-xs(flex='40' layout='row')
-		md-button(aria-label='' flex='100' ng-click='vm.goTo("categories")') Categories
-		md-button(aria-label='' flex='100' ng-click='vm.goTo("about")') About Us		
-		md-button(aria-label='' flex='100' ng-click='vm.goTo("contact")') Contact Us

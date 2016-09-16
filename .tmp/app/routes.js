@@ -12,7 +12,18 @@
 		$stateProvider
 		.state('home', {
 			url: '/',
-			component: 'home'
+			component: 'home',
+			resolve: {
+				top: ["homeService", function(homeService){
+					return homeService.getTopEvents();
+				}],
+				latest: ["homeService", function(homeService){
+					return homeService.getLatestEvents();
+				}],
+				closest: ["homeService", function(homeService){
+					return homeService.getClosestEvents();
+				}]
+			}
 		});
 
 		$stateProvider

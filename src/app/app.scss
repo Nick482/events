@@ -1,9 +1,16 @@
 .container {
   padding: 10px;
+  md-input-container.input-container {
+  	margin-bottom: 0;
+  }
   menu{
     padding-left: 0;
+    margin-bottom: 20px;
   }
   .menu {
+	.logo-img {
+		padding-top: 12px;
+	}
     background-color: lightblue;
     
     md-input-container {
@@ -12,13 +19,20 @@
     i {
 	    line-height: 1.5;
     }
-    .search {
+    .mobile-menu{
     	button {
+    		padding-top: 0;
+    		padding-bottom: 0;
+    	}
+    }
+    .search {
+    	.search-button {
 		    height: 35px;
 	    	min-height: 0;
-	    	margin-top: 15px;
 	    }
-
+	    input {
+	    	width: 30vw;
+	    }
 	}
   }
 }

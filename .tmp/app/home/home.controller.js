@@ -7,5 +7,6 @@
 		var vm = this;
 
 		vm.hero = 'Bond';
+		console.log(vm.top);
 	}
 })();

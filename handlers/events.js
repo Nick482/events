@@ -39,6 +39,18 @@ function getAll(req, res, next) {
 	});
 }
 
+function getTop(req, res, next) {
+	res.send('Top Events, right here!');
+}
+
+function getClosest(req, res, next) {
+	res.send('Close, but Can\'t touch this!');
+}
+
+function getLatest(req, res, next) {
+	res.send('latest events, and stuff');
+}
+
 function remove(req, res, next) {
 	Event.findOneAndRemove(req.query).exec(function(err, event){
 	if(err) {
@@ -53,5 +65,8 @@ module.exports = {
 	update: update,
 	getOne: getOne,
 	getAll: getAll,
+	getTop: getTop,
+	getLatest: getLatest,
+	getClosest: getClosest,
 	remove: remove
 }
