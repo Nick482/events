@@ -1,6 +1,5 @@
 .container {
-  min-height: 100vh;
-  padding: 10px 10px 0 10px;
+  padding: 10px 64px 0 64px;
   background-image: url('common/img/bg.jpg');
   background-size: cover;
   md-input-container.input-container {
@@ -15,11 +14,11 @@
   }
   .categories-body{
     margin-bottom: 20px;
-    min-height: 50vh;
+    min-height: 66vh;
   }
   .event-body {
     margin-bottom: 20px;
-    min-height: 50vh;
+    min-height: 66vh;
   }
   .menu {
 	.logo-img {
@@ -52,7 +51,7 @@
 	}
   }
 .list-item {
-    height: 100px;
+    height: 110px;
     position: relative;
     display: inline-block;
     span {
@@ -124,9 +123,9 @@
   }
   .subcategory-body {
     margin-bottom: 20px;
-    min-height: 50vh;
+    min-height: 66vh;
     .event {
-      height: 150px;
+      height: 200px;
       .event-info {
         display: none;
         .event-info-title {
@@ -154,7 +153,8 @@
     }
   }
   footer {
-    background-color: rgba(0,0,0, 0.9);
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
     * {
       color: goldenrod;
     }
