@@ -4,9 +4,11 @@
 		.module('app')
 		.controller('footerCtrl', footerCtrl);
 
-	function footerCtrl() {
+	function footerCtrl($state) {
 		var vm = this;
 
-		vm.footerLine = 'In a browser window, really?'
+		vm.goTo = function(dest){
+			$state.go(dest);
+		}
 	}
 })();

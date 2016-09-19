@@ -8,6 +8,6 @@
 	function subcategoryCtrl(categoryService){
 		var vm = this;
 
-		console.log(vm.subcategory);
+		vm.goToEvent = categoryService.goToEvent;
 	}
 })();

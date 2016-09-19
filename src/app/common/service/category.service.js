@@ -8,7 +8,8 @@
 		return {
 			getCategories: getCategories,
 			getSubcategory: getSubcategory,
-			viewEvents: viewEvents
+			viewEvents: viewEvents,
+			goToEvent: goToEvent
 		}
 
 		function getCategories(){
@@ -39,6 +40,10 @@
 
 		function viewEvents(id){
 			$state.go('subcategory', {subcategoryID: id});
+		}
+
+		function goToEvent(id) {
+			$state.go('event', {eventID: id});
 		}
 	}
 })();

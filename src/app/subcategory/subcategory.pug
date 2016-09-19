@@ -1,7 +1,9 @@
 .subcategory-body
-	.subcategory(ng-repeat='event in vm.subcategory.events')
+	.event.list-item(ng-repeat='event in vm.subcategory.events' ng-click=' vm.goToEvent(event._id)')
 		span.event-title {{event.title}}
+		img(ng-src='{{event.image}}')
 		.event-info
+			span.event-info-title {{event.title}}
 			span.event-place {{event.place}}
-			span.event-date {{event.start}}
+			span.event-date {{event.start | date:"dd/MM/yyyy"}}
 			span.free-seats {{event.freeSeats}}/{{event.limit}}
