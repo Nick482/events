@@ -65,6 +65,7 @@
       -ms-transform: translate(-50%, -50%);
       -o-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
+      text-transform: uppercase;
     }
     img {
       height: 100%;
@@ -72,9 +73,7 @@
       border-radius: 15px;
     }
   }
-  .subcategories {
-    position: relative;
-  }
+
   .top-list-item, .closest-list-item, .category, .subcategory, .event {
     cursor: pointer;
     max-width: 22%;
@@ -87,6 +86,7 @@
     }
   }
   .top, .closest, .latest, .categories, .subcategories {
+    position: relative;
     height: auto;
     border: 5px solid #111;
     border-bottom-right-radius: 15px;
@@ -125,6 +125,7 @@
     margin-bottom: 20px;
     min-height: 66vh;
     .event {
+      transform-origin: bottom;
       height: 200px;
       .event-info {
         display: none;
@@ -140,6 +141,7 @@
       }
     }
     .event:hover {
+      box-sizing: border-box;
       border: 5px solid #111;
       border-bottom-right-radius: 15px;
       border-radius: 25px;
@@ -149,6 +151,7 @@
       }
       .event-info {
           display: block;
+          box-sizing: border-box;
         }
     }
   }
