@@ -40,7 +40,58 @@ function getAll(req, res, next) {
 }
 
 function getTop(req, res, next) {
-	res.send('Top Events, right here!');
+	res.send([
+    {
+      id: 0,
+      title: 'first',
+      img: 'link-to-img'
+    },
+    {
+      id: 1,
+      title: 'second',
+      img: 'link-to-img'
+    },
+    {
+      id: 0,
+      title: 'first',
+      img: 'link-to-img'
+    },
+    {
+      id: 0,
+      title: 'first',
+      img: 'link-to-img'
+    },
+    {
+      id: 0,
+      title: 'first',
+      img: 'link-to-img'
+    },
+    {
+      id: 0,
+      title: 'first',
+      img: 'link-to-img'
+    },
+    {
+      id: 0,
+      title: 'first',
+      img: 'link-to-img'
+    },
+    {
+      id: 0,
+      title: 'first',
+      img: 'link-to-img'
+    },
+    {
+      id: 0,
+      title: 'first',
+      img: 'link-to-img'
+    },
+    {
+      id: 0,
+      title: 'first',
+      img: 'link-to-img'
+    }
+  ]);
 }
 
 function getClosest(req, res, next) {

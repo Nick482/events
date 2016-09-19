@@ -12,7 +12,7 @@
 		padding-top: 12px;
 	}
     background-color: lightblue;
-    
+
     md-input-container {
     	margin: 0;
     }
@@ -34,5 +34,34 @@
 	    	width: 30vw;
 	    }
 	}
+  }
+
+    .top-list-item {
+      height: 100px;
+      position: relative;
+      background-color: lightblue;
+      display: inline-block;
+      span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+      img {
+
+      }
+    }
+  .home-body {
+    .top, .closest {
+      height: auto;
+      margin-bottom: 20px;
+    }
+    .top-list-item {
+      width: 20%;
+    }
   }
 }

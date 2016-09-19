@@ -43,12 +43,12 @@
 		});
 
 		$stateProvider
-		.state('categories.category', {
-			url: '/{categoryID}',
-			component: 'category',
+		.state('categories.subcategory', {
+			url: '/{subcategoryID}',
+			component: 'subcategory',
 			resolve: {
-				category: function(categoryService, $stateParams){
-					return categoryService.getCategory($stateParams.categoryID);
+				subcategory: function(categoryService, $stateParams){
+					return categoryService.getSubcategory($stateParams.subcategoryID);
 				}
 			}
 		});

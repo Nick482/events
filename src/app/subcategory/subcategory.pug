@@ -1,0 +1,7 @@
+.subcategory-body
+	.subcategory(ng-repeat='event in vm.events')
+		span.event-title {{event.title}}
+		.event-info
+			span.event-place {{event.place}}
+			span.event-date {{event.start}}
+			span.free-seats {{event.freeSeats}}/{{event.limit}}

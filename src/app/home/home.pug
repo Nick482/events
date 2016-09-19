@@ -1,4 +1,14 @@
 .home(layout='row' )
-	.top(flex='70') Mr {{vm.hero}}, I've been expecting you, your hot events are: {{vm.top}}
-	.latest(flex='30') Oddjob stands here, showing you the latest of events: {{vm.latest}}
-
+  .home-body(flex='70' layout='column')
+    .top(flex='100')
+      div.top-list-item(ng-repeat='event in vm.top' ng-click=' vm.goToEvent(event.id)')
+        span {{event.title}}
+        img(ng-src='{{event.image}}')
+    .closest(flex='100')
+      div.top-list-item(ng-repeat='event in vm.top' ng-click=' vm.goToEvent(event.id)')
+        span {{event.title}}
+        img(ng-src='{{event.image}}')
+  .latest(flex-offset='10' flex='20' layout='column')
+    div.top-list-item(flex='100' ng-repeat='event in vm.top' ng-click=' vm.goToEvent(event.id)' style='background-color: lightblue')
+      span {{event.title}}
+      img(ng-src='{{event.image}}')

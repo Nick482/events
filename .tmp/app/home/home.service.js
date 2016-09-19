@@ -17,7 +17,6 @@
 				method: 'GET',
 				url: '/events/latest'
 			}).then(function(events){
-				console.log(events);
 				deferred.resolve(events.data);
 			}).catch(function(err){
 				console.log('err');
@@ -31,7 +30,6 @@
 				method: 'GET',
 				url: '/events/top'
 			}).then(function(events){
-				console.log(events);
 				deferred.resolve(events.data);
 			}).catch(function(err){
 				console.log('err');
@@ -45,7 +43,6 @@
 				method: 'GET',
 				url: '/events/closest'
 			}).then(function(events){
-				console.log(events);
 				deferred.resolve(events.data);
 			}).catch(function(err){
 				console.log('err');
