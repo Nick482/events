@@ -15,7 +15,7 @@ var eventSchema = new mongoose.Schema({
 	},
 	date_added: {
 		type: Date,
-		default: new Date()
+		default: Date.now()
 	},
 	place: {
 		type: String,

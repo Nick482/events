@@ -4,7 +4,6 @@ var Category = require('../models/Category');
 
 function add(req, res, next){
 	var subcategory = new Subcategory(req.body);
-	// console.log(subcategory);
 
 	Category.findById(subcategory.category, function(err, category){
 		if(err){
@@ -15,6 +14,7 @@ function add(req, res, next){
 			if(err){
 				return next(err);
 			}
+			subcategory.image = 'app/common/img/' + subcategory.title + '.jpg';
 			subcategory.save(function(err, subcategory){
 				if(err){
 					return next(err)

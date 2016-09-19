@@ -10,6 +10,10 @@ var subcategorySchema = new mongoose.Schema({
 		ref: 'Category',
 		required: true
 	},
+	image: {
+		type: String,
+		default: 'app/common/img/stock.jpg'
+	},
 	events: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Event'

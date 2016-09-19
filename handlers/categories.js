@@ -4,11 +4,13 @@ var Category = require('../models/Category');
 function add(req, res, next){
 	var category = new Category(req.body);
 
+	category.image = 'app/common/img/' + category.title + '.jpg';
+
 	category.save(function(err, category){
 		if(err){
 			return next(err)
 		}
-		res.status(201)
+		res.status(201).send(category);
 	});
 }
 
@@ -46,7 +48,7 @@ function remove(req, res, next){
 		if(err){
 			return next(err);
 		}
-		res.status(200)
+		res.status(200).send(category);
 	})
 }
 

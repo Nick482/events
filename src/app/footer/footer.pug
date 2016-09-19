@@ -1,2 +1,11 @@
-.footer
-	p {{vm.footerLine}}
+.footer(layout='row')
+	.sitemap(layout='column' flex='33')
+		md-button(aria-label='Categories' flex='100' ng-click='vm.goTo("categories")') Browse
+		md-button(aria-label='Picker' flex='100' ng-click='vm.goTo("picker")') Picker
+		md-button(aria-label='About Us' flex='100' ng-click='vm.goTo("about")') About Us
+		md-button(aria-label='Contact Us' flex='100' ng-click='vm.goTo("contact")') Contact Us
+	.info(flex='33' flex-offset='33')
+		p Email: 
+		p Phone: 
+		p Address:
+.copy copyright

@@ -5,6 +5,10 @@ var categorySchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
+	image: {
+		type: String,
+		default: 'app/common/img/stock.jpg'
+	},
 	subcategories: [{
 		type: mongoose.Schema.Types.ObjectId, ref: 'Subcategory'
 	}]
