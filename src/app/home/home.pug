@@ -1,14 +1,14 @@
 .home(layout='row' )
   .home-body(flex='70' layout='column')
     .top(flex='100')
-      div.top-list-item(ng-repeat='event in vm.top' ng-click=' vm.goToEvent(event.id)')
+      div.top-list-item.list-item(ng-repeat='event in vm.top' ng-click=' vm.goToEvent(event._id)')
         span {{event.title}}
         img(ng-src='{{event.image}}')
     .closest(flex='100')
-      div.top-list-item(ng-repeat='event in vm.top' ng-click=' vm.goToEvent(event.id)')
+      div.closest-list-item.list-item(ng-repeat='event in vm.closest' ng-click=' vm.goToEvent(event._id)')
         span {{event.title}}
         img(ng-src='{{event.image}}')
   .latest(flex-offset='10' flex='20' layout='column')
-    div.top-list-item(flex='100' ng-repeat='event in vm.top' ng-click=' vm.goToEvent(event.id)' style='background-color: lightblue')
+    div.latest-list-item.list-item(flex='100' ng-repeat='event in vm.top' ng-click=' vm.goToEvent(event._id)')
       span {{event.title}}
       img(ng-src='{{event.image}}')

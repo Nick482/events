@@ -4,10 +4,12 @@
 	.controller('categoriesCtrl', categoriesCtrl);
 
 	/** @ngInject */
-	function categoriesCtrl(){
+	function categoriesCtrl(categoryService){
 		var vm = this;
 		// vm.categories = categories;
-
-		console.log(vm.categories);
+		vm.showSubcategories = function(subcategories){
+			vm.subcategories = subcategories;
+		};
+		vm.viewEvents = categoryService.viewEvents;
 	}
 })();

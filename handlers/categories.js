@@ -24,7 +24,7 @@ function getOne(req, res, next){
 }
 
 function getAll(req, res, next){
-	Category.find({}).populate('subcategories', 'title').exec(function(err, categories){
+	Category.find({}).populate('subcategories', 'title image').exec(function(err, categories){
 		if(err){
 			return next(err);
 		}

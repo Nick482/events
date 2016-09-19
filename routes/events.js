@@ -4,7 +4,7 @@ var eventHandler = require('../handlers/events');
 
 router.get('/top', eventHandler.getTop);
 
-router.get('/closets', eventHandler.getClosest);
+router.get('/closest', eventHandler.getClosest);
 
 router.get('/latest', eventHandler.getLatest);
 

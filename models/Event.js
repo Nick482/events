@@ -13,6 +13,10 @@ var eventSchema = new mongoose.Schema({
 		type: Date,
 		required: true
 	},
+	date_added: {
+		type: Date,
+		default: new Date()
+	},
 	place: {
 		type: String,
 		required: true
@@ -41,18 +45,18 @@ var eventSchema = new mongoose.Schema({
 		required: true
 	},
 	image: {
-		type: String
+		type: String,
+		default: 'app/common/img/stock.jpg'
 	},
-	category: {
-		type: mongoose.Schema.Types.ObjectId,
-		required: true,
-		ref: 'Category'
+	views: {
+		type: Number,
+		default: 0
 	},
-	subcategories: [{
+	subcategory: {
 		type: mongoose.Schema.Types.ObjectId,
 		required: true,
 		ref: 'Subcategory'
-	}],
+	},
 	sessions: [{type: mongoose.Schema.Types.ObjectId, ref: 'Session'}]
 });
 var Event = mongoose.model('Event', eventSchema);

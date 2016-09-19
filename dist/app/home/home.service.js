@@ -1,14 +1,15 @@
 (function(){
-	homeService.$inject = ["$http", "$q"];
+	homeService.$inject = ["$http", "$q", "$state"];
 	angular
 		.module('app')
 		.factory('homeService', homeService);
 	/** @ngInject */
-	function homeService($http, $q) {
+	function homeService($http, $q, $state) {
 		return {
 			getTopEvents: getTopEvents,
 			getLatestEvents: getLatestEvents,
-			getClosestEvents: getClosestEvents
+			getClosestEvents: getClosestEvents,
+			goToEvent: goToEvent
 		}
 
 		function getLatestEvents(){
@@ -48,6 +49,10 @@
 				console.log('err');
 			});
 			return deferred.promise;
+		}
+
+		function goToEvent(id) {
+			$state.go('event', {eventID: id});
 		}
 		// function getEvent(id){
 		// 	var deferred = $q.defer();

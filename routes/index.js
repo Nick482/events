@@ -33,9 +33,6 @@ router.use('/categories', categories);
 router.use('/subcategories', subcategories);
 
 router.use('/', function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-}, errorHandler);
-
+  res.render('app', {title: 'Express'});
+})
 module.exports = router;

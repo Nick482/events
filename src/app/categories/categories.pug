@@ -1,2 +1,9 @@
-.categories
-	| {{vm.categories}}
+.categories-body(layout='row')
+	.categories(flex='50')
+		.category(flex='33' ng-repeat='category in vm.categories' ng-click='vm.showSubcategories(category.subcategories)')
+			span.title() {{category.title}}
+			img(ng-src='{{category.image}}')
+	.subcategories(flex='50' ng-repeat='subcategory in vm.subcategories')
+		.subcategory(flex='33' ng-click='vm.viewEvents(subcategory._id)')
+			span.title {{subcategory.title}}
+			img(ng-src='{{subcategory.image}}')

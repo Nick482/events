@@ -43,8 +43,8 @@
 		});
 
 		$stateProvider
-		.state('categories.subcategory', {
-			url: '/{subcategoryID}',
+		.state('subcategory', {
+			url: '/subcategory/{subcategoryID}',
 			component: 'subcategory',
 			resolve: {
 				subcategory: function(categoryService, $stateParams){
@@ -60,15 +60,14 @@
 		});
 
 		$stateProvider
-		.state('events', {
-			url: '/events',
-			component: 'events'
-		});
-
-		$stateProvider
-		.state('events.event', {
-			url: '/{eventID}',
-			component: 'event'
+		.state('event', {
+			url: '/event/{eventID}',
+			component: 'event',
+			resolve: {
+				event: function(eventService, $stateParams) {
+					return eventService.getEvent($stateParams.eventID);
+				}
+			}
 		});
 	}
 })();

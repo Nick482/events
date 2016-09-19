@@ -3,10 +3,9 @@
 	angular.module('app')
 		.controller('homeCtrl', homeCtrl);
 
-	function homeCtrl(){
+	function homeCtrl(homeService){
 		var vm = this;
 
-		vm.hero = 'Bond';
-		console.log(vm.top);
+		vm.goToEvent = homeService.goToEvent;
 	}
 })();

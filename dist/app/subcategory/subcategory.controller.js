@@ -1,4 +1,5 @@
 (function(){
+	subcategoryCtrl.$inject = ["categoryService"];
 	angular
 	.module('app')
 	.controller('subcategoryCtrl', subcategoryCtrl);

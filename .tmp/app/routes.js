@@ -44,12 +44,12 @@
 		});
 
 		$stateProvider
-		.state('categories.category', {
-			url: '/{categoryID}',
-			component: 'category',
+		.state('subcategory', {
+			url: '/subcategory/{subcategoryID}',
+			component: 'subcategory',
 			resolve: {
-				category: ["categoryService", "$stateParams", function(categoryService, $stateParams){
-					return categoryService.getCategory($stateParams.categoryID);
+				subcategory: ["categoryService", "$stateParams", function(categoryService, $stateParams){
+					return categoryService.getSubcategory($stateParams.subcategoryID);
 				}]
 			}
 		});
@@ -61,15 +61,14 @@
 		});
 
 		$stateProvider
-		.state('events', {
-			url: '/events',
-			component: 'events'
-		});
-
-		$stateProvider
-		.state('events.event', {
-			url: '/{eventID}',
-			component: 'event'
+		.state('event', {
+			url: '/event/{eventID}',
+			component: 'event',
+			resolve: {
+				event: ["eventService", "$stateParams", function(eventService, $stateParams) {
+					return eventService.getEvent($stateParams.eventID);
+				}]
+			}
 		});
 	}
 })();

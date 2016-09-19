@@ -1,5 +1,6 @@
 .container {
   padding: 10px;
+  background-image: url('app/common/bg.jpg');
   md-input-container.input-container {
   	margin-bottom: 0;
   }
@@ -35,11 +36,9 @@
 	    }
 	}
   }
-
-    .top-list-item {
+    .list-item {
       height: 100px;
       position: relative;
-      background-color: lightblue;
       display: inline-block;
       span {
         position: absolute;
@@ -52,16 +51,19 @@
         transform: translate(-50%, -50%);
       }
       img {
-
+        height: 100%;
+        width: 100%;
       }
+    }
+    .top-list-item, .closest-list-item {
+      max-width: 22%;
+      margin: 10px;
+
     }
   .home-body {
     .top, .closest {
       height: auto;
       margin-bottom: 20px;
-    }
-    .top-list-item {
-      width: 20%;
     }
   }
 }

@@ -1,15 +1,28 @@
 var mongoose = require('mongoose');
 var Event = require('../models/Event');
+var Subcategory = require('../models/Subcategory');
 
 function add(req, res, next) {
 	var event = new Event(req.body);
 
-	event.save(function(err, event){
-		if(err) {
-			return next(err)
-		}
-		res.status(201);
-	});
+  Subcategory.findById(event.subcategory, function(err, subcategory){
+    if (err) {
+      return next(err);
+    }
+    subcategory.events.push(event._id);
+    subcategory.save(function(err, subcategory){
+      if(err) {
+        return next(err);
+      }
+      event.image = 'app/common/img/' + subcategory.title + '.jpg';
+    	event.save(function(err, event){
+    		if(err) {
+    			return next(err)
+    		}
+    		res.status(201).send(event);
+    	});
+    });
+  });
 }
 
 function update(req, res, next) {
@@ -22,12 +35,15 @@ function update(req, res, next) {
 }
 
 function getOne(req, res, next) {
-	Event.findOne({id: req.params.id}).exec(function(err, event){
+	Event.findById(req.params.id).exec(function(err, event){
 	if(err) {
 		return next(err)
 	}
-	res.status(200).send(event);
-	});
+  event.views +=1;
+  event.save(function(err, event){
+      res.status(200).send(event);
+    });
+  });
 }
 
 function getAll(req, res, next) {
@@ -40,66 +56,30 @@ function getAll(req, res, next) {
 }
 
 function getTop(req, res, next) {
-	res.send([
-    {
-      id: 0,
-      title: 'first',
-      img: 'link-to-img'
-    },
-    {
-      id: 1,
-      title: 'second',
-      img: 'link-to-img'
-    },
-    {
-      id: 0,
-      title: 'first',
-      img: 'link-to-img'
-    },
-    {
-      id: 0,
-      title: 'first',
-      img: 'link-to-img'
-    },
-    {
-      id: 0,
-      title: 'first',
-      img: 'link-to-img'
-    },
-    {
-      id: 0,
-      title: 'first',
-      img: 'link-to-img'
-    },
-    {
-      id: 0,
-      title: 'first',
-      img: 'link-to-img'
-    },
-    {
-      id: 0,
-      title: 'first',
-      img: 'link-to-img'
-    },
-    {
-      id: 0,
-      title: 'first',
-      img: 'link-to-img'
-    },
-    {
-      id: 0,
-      title: 'first',
-      img: 'link-to-img'
+	Event.find({status: {$in: [2,3]}}).sort('-views').limit(12).exec(function(err, events){
+    if(err) {
+      return next(err);
     }
-  ]);
+    res.status(200).send(events);
+  });
 }
 
 function getClosest(req, res, next) {
-	res.send('Close, but Can\'t touch this!');
+	Event.find({status: {$in: [2,3]}}).sort('start').limit(12).exec(function(err, events){
+    if(err) {
+      return next(err);
+    }
+    res.status(200).send(events);
+  });
 }
 
 function getLatest(req, res, next) {
-	res.send('latest events, and stuff');
+	Event.find({status: {$in: [2,3]}}).sort('-date_added').limit(12).exec(function(err, events){
+    if(err) {
+      return next(err);
+    }
+    res.status(200).send(events);
+  });
 }
 
 function remove(req, res, next) {
