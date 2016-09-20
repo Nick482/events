@@ -8,6 +8,8 @@ router.get('/closest', eventHandler.getClosest);
 
 router.get('/latest', eventHandler.getLatest);
 
+router.get('/search/:text', eventHandler.search);
+
 router.get('/:id', eventHandler.getOne);
 
 router.get('/', eventHandler.getAll);

@@ -3,9 +3,9 @@
 	angular.module('app')
 		.controller('homeCtrl', homeCtrl);
 
-	function homeCtrl(homeService){
+	function homeCtrl(homeService, navigationService){
 		var vm = this;
 
-		vm.goToEvent = homeService.goToEvent;
+		vm.goToEvent = navigationService.goToEvent;
 	}
 })();

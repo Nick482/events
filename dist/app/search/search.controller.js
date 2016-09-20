@@ -1,10 +1,11 @@
 (function(){
+	searchCtrl.$inject = ["navigationService"];
 	angular
 	.module('app')
-	.controller('subcategoryCtrl', subcategoryCtrl);
+	.controller('searchCtrl', searchCtrl);
 
 	/** @ngInject */
-	function subcategoryCtrl(navigationService){
+	function searchCtrl(navigationService){
 		var vm = this;
 
 		vm.goToEvent = navigationService.goToEvent;

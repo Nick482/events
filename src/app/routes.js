@@ -27,8 +27,13 @@
 
 		$stateProvider
 		.state('search', {
-			url: '/search',
-			component: 'search'
+			url: '/search/{searchText}',
+			component: 'search',
+			resolve: {
+				results: function(eventService, $stateParams){
+					return eventService.findEvents($stateParams.searchText);
+				}
+			}
 		});
 
 		$stateProvider

@@ -4,7 +4,7 @@
 		.module('app')
 		.controller('menuCtrl', headerCtrl);
 
-	function headerCtrl($state) {
+	function headerCtrl(navigationService) {
 		var vm = this;
 	    var originatorEv;
 
@@ -12,10 +12,10 @@
 	      $mdOpenMenu(ev);
 	    };
 
-	    vm.goTo = function(dest){
-	    	$state.go(dest);
-	    }
+	    vm.goTo = navigationService.goTo;
 
-		vm.menuLine = 'link'
+		vm.search = function(){
+			navigationService.goToSearch(vm.searchText);
+		}
 	}
 })();

@@ -1,16 +1,14 @@
 (function(){
-	categoryService.$inject = ["$http", "$q", "$state"];
+	categoryService.$inject = ["$http", "$q"];
 	angular
 	.module('app')
 	.factory('categoryService', categoryService);
 	/** @ngInject */
-	function categoryService($http, $q, $state){
+	function categoryService($http, $q){
 
 		return {
 			getCategories: getCategories,
-			getSubcategory: getSubcategory,
-			viewEvents: viewEvents,
-			goToEvent: goToEvent
+			getSubcategory: getSubcategory
 		}
 
 		function getCategories(){
@@ -37,14 +35,6 @@
 				console.log('error');
 			})
 			return deferred.promise;
-		}
-
-		function viewEvents(id){
-			$state.go('subcategory', {subcategoryID: id});
-		}
-
-		function goToEvent(id) {
-			$state.go('event', {eventID: id});
 		}
 	}
 })();

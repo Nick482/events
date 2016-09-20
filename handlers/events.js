@@ -82,6 +82,18 @@ function getLatest(req, res, next) {
   });
 }
 
+function search(req, res, next) {
+  console.log(req.params);
+
+  Event.find({title: new RegExp(req.params.text, "i")}, function(err, events) {
+    console.log(events);
+  if(err){
+    return next(err);
+  }
+  res.status(200).send(events);
+});
+}
+
 function remove(req, res, next) {
 	Event.findByIdAndRemove(req.query.id).exec(function(err, event){
 	if(err) {
@@ -97,6 +109,7 @@ module.exports = {
 	getOne: getOne,
 	getAll: getAll,
 	getTop: getTop,
+  search: search,
 	getLatest: getLatest,
 	getClosest: getClosest,
 	remove: remove

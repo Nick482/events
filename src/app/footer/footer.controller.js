@@ -4,11 +4,9 @@
 		.module('app')
 		.controller('footerCtrl', footerCtrl);
 
-	function footerCtrl($state) {
+	function footerCtrl(navigationService) {
 		var vm = this;
 
-		vm.goTo = function(dest){
-			$state.go(dest);
-		}
+		vm.goTo = navigationService.goTo;
 	}
 })();

@@ -1,15 +1,13 @@
 (function(){
 	/** @ngInject */
-	footerCtrl.$inject = ["$state"];
+	footerCtrl.$inject = ["navigationService"];
 	angular
 		.module('app')
 		.controller('footerCtrl', footerCtrl);
 
-	function footerCtrl($state) {
+	function footerCtrl(navigationService) {
 		var vm = this;
 
-		vm.goTo = function(dest){
-			$state.go(dest);
-		}
+		vm.goTo = navigationService.goTo;
 	}
 })();

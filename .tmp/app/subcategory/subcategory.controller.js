@@ -1,13 +1,13 @@
 (function(){
-	subcategoryCtrl.$inject = ["categoryService"];
+	subcategoryCtrl.$inject = ["navigationService"];
 	angular
 	.module('app')
 	.controller('subcategoryCtrl', subcategoryCtrl);
 
 	/** @ngInject */
-	function subcategoryCtrl(categoryService){
+	function subcategoryCtrl(navigationService){
 		var vm = this;
 
-		vm.goToEvent = categoryService.goToEvent;
+		vm.goToEvent = navigationService.goToEvent;
 	}
 })();
