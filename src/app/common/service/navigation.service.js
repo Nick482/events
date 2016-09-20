@@ -45,6 +45,6 @@
 			$state.transitionTo($state.current, $stateParams, { 
   				reload: true, inherit: false, notify: true
 			});
-		}	
+		}
 	}
 })();

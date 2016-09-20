@@ -8,7 +8,11 @@
 	function adminService($http, $q, $state, $stateParams){
 		return {
 			getCategories: getCategories,
-			getEvents: getEvents
+			getEvents: getEvents,
+			goTo: goTo,
+			goToEvents: goToEvents,
+			prevPage: prevPage,
+			nextPage: nextPage
 		}
 
 		function getCategories() {
@@ -39,6 +43,32 @@
 			});
 
 			return deferred.promise;
+		}
+
+		function goTo(dest){
+			$state.go(dest);
+		}
+
+		function goToEvents(dest, page){
+			$state.go(dest, {page: page});
+		}
+
+		function nextPage() {
+			var page = parseInt($stateParams.page);
+			page += 1;
+			$stateParams.page = page;
+			$state.transitionTo($state.current, $stateParams, { 
+  				reload: true, inherit: false, notify: true
+			});
+		}
+		
+		function prevPage() {
+			var page = parseInt($stateParams.page);
+			page -= 1;
+			$stateParams.page = page;
+			$state.transitionTo($state.current, $stateParams, { 
+  				reload: true, inherit: false, notify: true
+			});
 		}
 	}
 })();

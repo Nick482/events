@@ -9,25 +9,25 @@
 		$urlRouterProvider.otherwise('/');
 
 		$stateProvider
-		.state('admin', {
-			url: '/',
-			component: 'admin',
+		.state('home', {
+			url: '/admin/',
+			component: 'home',
 		});
 
 		$stateProvider
-		.state('admin.categories', {
-			url: '/categories',
+		.state('categories', {
+			url: '/admin/categories/',
 			component: 'categories',
 			resolve: {
-				categories: function(categoryService){
+				categories: function(adminService){
 					return adminService.getCategories();
 				}
 			}
 		});
 
 		$stateProvider
-		.state('admin.events', {
-			url: '/events/{page}',
+		.state('events', {
+			url: '/admin/events/{page}/',
 			component: 'events',
 			resolve: {
 				events: function(adminService, $stateParams){
