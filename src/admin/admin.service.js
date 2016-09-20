@@ -12,7 +12,7 @@
 			goToEvents: goToEvents,
 			prevPage: prevPage,
 			nextPage: nextPage
-		}
+		};
 
 		function getCategories() {
 			var deferred = $q.defer();
