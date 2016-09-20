@@ -23,11 +23,11 @@
 			return deferred.promise;
 		}
 
-		function getSubcategory(id){
+		function getSubcategory(id, page){
 			var deferred = $q.defer();
 			$http({
 				method: 'GET',
-				url: '/subcategories/' + id
+				url: '/subcategories/' + id + '/' + page
 			}).then(function(subcategory){
 				deferred.resolve(subcategory.data);
 			}).catch(function(err){

@@ -3,9 +3,8 @@
 	.module('app')
 	.component('subcategory', {
 		templateUrl: 'app/subcategory/subcategory.html',
-		bindings: {subcategory: '<'},
+		bindings: {events: '<'},
 		controller: 'subcategoryCtrl',
 		controllerAs: 'vm'
 	})
-
 })();

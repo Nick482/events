@@ -15,7 +15,7 @@
 	    vm.goTo = navigationService.goTo;
 
 		vm.search = function(){
-			navigationService.goToSearch(vm.searchText);
+			navigationService.goToSearch(vm.searchText, 0);
 		}
 	}
 })();

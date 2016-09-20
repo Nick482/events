@@ -27,12 +27,12 @@
 			return deferred.promise;
 		}
 
-		function findEvents(text){
+		function findEvents(text, page){
 			var deferred = $q.defer();
 
 			$http({
 				method: 'GET',
-				url: '/events/search/' + text
+				url: '/events/search/' + text + '/' + page
 			}).then(function(events){
 				deferred.resolve(events.data);
 			}).catch(function(err){

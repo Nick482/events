@@ -83,9 +83,8 @@ function getLatest(req, res, next) {
 }
 
 function search(req, res, next) {
-  console.log(req.params);
 
-  Event.find({title: new RegExp(req.params.text, "i")}, function(err, events) {
+  Event.find({title: new RegExp(req.params.text, "i")}).skip(req.params.page * 8).limit(8).exec(function(err, events) {
     console.log(events);
   if(err){
     return next(err);

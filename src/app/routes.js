@@ -27,11 +27,11 @@
 
 		$stateProvider
 		.state('search', {
-			url: '/search/{searchText}',
+			url: '/search/{searchText}/{page}',
 			component: 'search',
 			resolve: {
 				results: function(eventService, $stateParams){
-					return eventService.findEvents($stateParams.searchText);
+					return eventService.findEvents($stateParams.searchText, $stateParams.page);
 				}
 			}
 		});
@@ -49,11 +49,11 @@
 
 		$stateProvider
 		.state('subcategory', {
-			url: '/subcategory/{subcategoryID}',
+			url: '/subcategory/{subcategoryID}/{page}',
 			component: 'subcategory',
 			resolve: {
-				subcategory: function(categoryService, $stateParams){
-					return categoryService.getSubcategory($stateParams.subcategoryID);
+				events: function(categoryService, $stateParams){
+					return categoryService.getSubcategory($stateParams.subcategoryID, $stateParams.page);
 				}
 			}
 		});

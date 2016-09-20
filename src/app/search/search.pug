@@ -1,4 +1,7 @@
 .subcategory-body
+	.navigation
+		button.prev(ng-click='vm.prevPage()' ng-disabled='{{vm.disablePrevButton}}') Previous Page
+		button.next(ng-click='vm.nextPage()') Next Page
 	.event.list-item(ng-repeat='event in vm.results' ng-click=' vm.goToEvent(event._id)')
 		span.event-title {{event.title}}
 		img(ng-src='{{event.image}}')

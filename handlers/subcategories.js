@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Subcategory = require('../models/Subcategory');
 var Category = require('../models/Category');
+var Event = require('../models/Event');
 
 function add(req, res, next){
 	var subcategory = new Subcategory(req.body);
@@ -26,11 +27,11 @@ function add(req, res, next){
 }
 
 function getOne(req, res, next){
-	Subcategory.findById(req.params.id).populate('events').exec(function(err, subcategory){
+	Event.find({subcategory: req.params.id}).skip(req.params.page * 8).limit(8).exec(function(err, events){
 		if(err){
 			return next(err);
 		}
-		res.status(200).send(subcategory)
+		res.status(200).send(events);
 	})
 }
 
