@@ -4,10 +4,11 @@
 	.factory('eventService', eventService);
 
 	/** @ngInject */
-	function eventService($http, $q, $state) {
+	function eventService($http, $q, $state, dialogService) {
 
 		return {
-			getEvent: getEvent
+			getEvent: getEvent,
+			signUp: signUp
 		}
 
 		function getEvent(id) {
@@ -19,9 +20,20 @@
 			}).then(function(event){
 				deferred.resolve(event.data);
 			}).catch(function(err){
-				console.log(err);
+				dialogService.showDialog({title: 'Error', text: 'An error occured when loading data'})
 			});
 			return deferred.promise;
+		}
+		function signUp(user) {
+			$http({
+				method: 'POST',
+				url: '/users/',
+				data: user
+			}).then(function(user){
+				dialogService.showDialog({title: 'Success', text: 'Successfully signed up!'})
+			}).catch(function(err){
+				dialogService.showDialog({title: 'Error', text: 'An error occured'});
+			});
 		}
 	}
 })();

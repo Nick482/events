@@ -1,4 +1,4 @@
 (function(){
 	angular
-  	.module('app', ['ngRoute', 'ui.router', 'ngMaterial']);
+  	.module('app', ['ngRoute', 'ui.router', 'ngMaterial', 'ngMessages']);
 })()

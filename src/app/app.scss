@@ -20,7 +20,41 @@
     margin-bottom: 20px;
     min-height: 66vh;
   }
+  .event-card {
+    padding-bottom: 15px;
+  }
+  .event-card-info {
+    padding-left: 15px;
+    img {
+      border-radius: 15px;
+    }
+    h3, p {
+      color: goldenrod;
+      margin-bottom: 3px;
+    }
+    p.session {
+      font-size: 12px;
+    }
+    p.date {
+      font-size: 12px;
+    }
+  }
+  .contact * {
+    color: goldenrod;
+  }
+  .session-selection {
+    width: 75%;
+  }
+  .info-block {
+    padding-left: 15px;
+  }
+  .sign-up-form {
+    
+  }
   .menu {
+    button {
+      background-color: transparent
+    }
 	.logo-img {
 		padding-top: 12px;
 	}
@@ -48,8 +82,8 @@
 	    input {
 	    	width: 30vw;
 	    }
+    }
 	}
-  }
 .list-item {
     height: 110px;
     position: relative;
@@ -85,7 +119,7 @@
       transform: scale(1.1);
     }
   }
-  .top, .closest, .latest, .categories, .subcategories {
+  .top, .closest, .latest, .categories, .subcategories, .event-card, .sign-up-form{
     position: relative;
     height: auto;
     border: 5px solid #111;

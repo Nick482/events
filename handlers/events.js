@@ -26,7 +26,7 @@ function add(req, res, next) {
 }
 
 function update(req, res, next) {
-	Event.findOneAndUpdate({id: req.body.id}, req.body).exec(function(err, event){
+	Event.findByIdAndUpdate(req.body._id, req.body).exec(function(err, event){
 	if(err) {
 		return next(err)
 	}
@@ -35,7 +35,7 @@ function update(req, res, next) {
 }
 
 function getOne(req, res, next) {
-	Event.findById(req.params.id).exec(function(err, event){
+	Event.findById(req.params.id).populate('eventSessions').exec(function(err, event){
 	if(err) {
 		return next(err)
 	}
@@ -83,7 +83,7 @@ function getLatest(req, res, next) {
 }
 
 function remove(req, res, next) {
-	Event.findOneAndRemove(req.query).exec(function(err, event){
+	Event.findByIdAndRemove(req.query.id).exec(function(err, event){
 	if(err) {
 		return next(err)
 	}

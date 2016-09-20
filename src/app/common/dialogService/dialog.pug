@@ -1,0 +1,8 @@
+md-dialog(ng-cloak='' md-theme="docs-dark")
+  form(layout='column' layout-align='center center')
+    md-dialog-content
+      .md-dialog-content
+        h2 {{vm.parent.title}}
+        p {{vm.parent.text}}
+    md-dialog-actions(layout='row' layout-align='center')
+      md-button(ng-click='vm.parent.ok()') OK

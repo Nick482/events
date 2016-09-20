@@ -13,7 +13,7 @@ function add(req, res, next){
 
 function update(req, res, next){
 	var body = req.body;
-	Admin.findOneAndUpdate({id: body.id}, body).exec(function(err, admin){
+	Admin.findByIdAndUpdate(body._id, body).exec(function(err, admin){
 		if(err){
 			return next(err)
 		}
@@ -22,7 +22,7 @@ function update(req, res, next){
 }
 
 function remove(req, res, next){
-	Admin.findOneAndRemove({id: req.params.id}).exec(function(err, admin){
+	Admin.findByIdAndRemove(req.params.id).exec(function(err, admin){
 		if(err){
 			return next(err);
 		}

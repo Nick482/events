@@ -15,7 +15,6 @@ function add(req, res, next){
 }
 
 function getOne(req, res, next){
-	console.log(req.params.id);
 	Category.findById(req.params.id).populate('subcategories').exec(function(err, category){
 		console.log(category);
 		if(err){
@@ -35,7 +34,7 @@ function getAll(req, res, next){
 }
 
 function update(req, res, next){
-	Category.findOneAndUpdate({id: req.body.id}, rea.body).exec(function(err, category){
+	Category.findByIdAndUpdate(req.body._id, rea.body).exec(function(err, category){
 		if(err){
 			return next(err)
 		}
@@ -44,7 +43,7 @@ function update(req, res, next){
 }
 
 function remove(req, res, next){
-	Category.findOneAndRemove({id: req.params.id}).exec(function(err, category){
+	Category.findByIdAndRemove(req.params.id).exec(function(err, category){
 		if(err){
 			return next(err);
 		}

@@ -44,7 +44,7 @@ function getAll(req, res, next){
 }
 
 function update(req, res, next){
-	Subcategory.findOneAndUpdate({id: req.body.id}, rea.body).exec(function(err, subcategory){
+	Subcategory.findByIdAndUpdate(req.body._id, req.body).exec(function(err, subcategory){
 		if(err){
 			return next(err)
 		}
@@ -53,7 +53,7 @@ function update(req, res, next){
 }
 
 function remove(req, res, next){
-	Subcategory.findOneAndRemove({id: req.params.id}).exec(function(err, subcategory){
+	Subcategory.findByIdAndRemove(req.params.id).exec(function(err, subcategory){
 		if(err){
 			return next(err);
 		}

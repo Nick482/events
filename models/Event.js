@@ -57,7 +57,7 @@ var eventSchema = new mongoose.Schema({
 		required: true,
 		ref: 'Subcategory'
 	},
-	sessions: [{type: mongoose.Schema.Types.ObjectId, ref: 'Session'}]
+	eventSessions: [{type: mongoose.Schema.Types.ObjectId, ref: 'EventSession'}]
 });
 var Event = mongoose.model('Event', eventSchema);
 

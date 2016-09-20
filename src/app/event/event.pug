@@ -1,5 +1,55 @@
 .event-body(layout='row')
 	.event-card(flex='70' layout='column')
-		| Event related stuff
-	.sign-up-form(flex='30' layout='column')
-		| form placeholder
+		h1.body-header
+		.event-card-info(layout='row')
+			.schedule(layout='column')
+				img(ng-src='{{vm.event.image}}')
+				md-list
+					md-subheader.md-no-sticky Event Schedule:
+					md-list-item(ng-repeat='session in vm.event.eventSessions')
+						p.session  {{session.title}} - From: {{session.start | date: "medium"}} To {{session.end | date: "medium"}}
+			.info-block
+				h3 Title:
+				p {{vm.event.title}}
+				h3 Address:
+				p {{vm.event.place}}
+				h3 Date:
+				p.date {{vm.event.start | date: "medium"}} - {{vm.event.end | date: "medium"}}
+				h3 Free Seats/Limit:
+				p {{vm.event.freeSeats}}/{{vm.event.limit}}
+				button(ng-disabled='vm.inactiveEvent' ng-click='vm.openForm()').sign-up-button Sign Up
+				h3 Description:
+				p {{vm.event.description}}
+	.sign-up-form(flex='30' layout='column' ng-show='vm.showForm')
+		form(name='userForm')
+			.name(layout='row')
+				md-input-container(flex='50')
+					label First Name
+					input(required name='firstName' ng-model='vm.user.firstName')
+					div(ng-messages="projectForm.clientName.$error")
+						div(ng-message="required") This is required.
+				md-input-container(fles='50')
+					label Last Name
+					input(required name='lastName' ng-model='vm.user.lastName')
+					div(ng-messages="projectForm.clientName.$error")
+						div(ng-message="required") This is required.
+			.contact-info(layout='row')
+				md-input-container
+					label Email
+					input(required name='email' ng-model='vm.user.email' type='email')
+					div(ng-messages="projectForm.clientName.$error")
+						div(ng-message="required") This is required.
+				md-input-container
+					label Phone
+					input(name='phone' ng-model='vm.user.phone')
+			md-input-container.session-selection
+				label Sessions
+				md-select(ng-model='vm.user.eventSessions' multiple='' required)
+					md-optgroup(label='Sessions')
+						md-option(ng-value='session._id' ng-repeat="session in vm.event.eventSessions") {{session.title}}
+			md-button(ng-click='vm.signUp()' ng-disabled="userForm.$invalid").md-raised.md-primary Sign Up
+			.contact
+				h3 Contact the event organizers directly:
+				h4 Phone : +38000000000
+				h4 E-Mail: mail@mail.com
+

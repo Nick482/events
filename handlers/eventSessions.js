@@ -4,11 +4,11 @@ var Event = require('../models/Event');
 function add(req, res, next) {
 	var eventSession = new EventSession(req.body);
 
-	Event.findOne({id: eventSession.event}, function(err, event){
+	Event.findById(eventSession.event, function(err, event){
 		if(err){
 			return next(err);
 		}
-		event.eventSessions.push(eventSession);
+		event.eventSessions.push(eventSession._id);
 		event.save(function(err, event){
 			if(err){
 				return next(err);
@@ -17,7 +17,7 @@ function add(req, res, next) {
 				if(err) {
 					return next(err);
 				}
-				res.status(201);
+				res.status(201).send(eventSession);
 			})
 		})
 	})
@@ -42,7 +42,7 @@ function getAll(req, res, next) {
 }
 
 function update(req, res, next) {
-	EventSession.findOneAndUpdate({id: req.body.id}, req.body).exec(function(err, eventSession){
+	EventSession.findByIdAndUpdate(req.body._id, req.body).exec(function(err, eventSession){
 		if(err){
 			return next(err)
 		}
@@ -51,7 +51,7 @@ function update(req, res, next) {
 }
 
 function remove(req, res, next) {
-	EventSession.findOneAndDelete({id: req.params.id}).exec(function(err, eventSession){
+	EventSession.findByIdAndDelete(req.params.id).exec(function(err, eventSession){
 		if(err){
 			return next(err)
 		}
