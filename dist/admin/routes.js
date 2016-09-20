@@ -1,4 +1,5 @@
 (function(){
+	routesConfig.$inject = ["$stateProvider", "$urlRouterProvider", "$locationProvider"];
 	angular
 	  .module('app.admin')
 	  .config(routesConfig);
@@ -19,9 +20,9 @@
 			url: '/categories',
 			component: 'categories',
 			resolve: {
-				categories: function(categoryService){
+				categories: ["categoryService", function(categoryService){
 					return adminService.getCategories();
-				}
+				}]
 			}
 		});
 
@@ -30,9 +31,9 @@
 			url: '/events/{page}',
 			component: 'events',
 			resolve: {
-				events: function(adminService, $stateParams){
+				events: ["adminService", "$stateParams", function(adminService, $stateParams){
 					return adminService.getEvents($stateParams.page);
-				}
+				}]
 			}
 		});
 	}

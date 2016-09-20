@@ -47,7 +47,7 @@ function getOne(req, res, next) {
 }
 
 function getAll(req, res, next) {
-	Event.find({}, function(err, events){
+	Event.find({}).skip(req.params.page).limit(50).exec(function(err, events){
 	if(err) {
 		return next(err)
 	}

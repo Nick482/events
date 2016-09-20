@@ -16,9 +16,9 @@ html
     link(rel='stylesheet', href='admin/admin.css')
     // endbuild
   body(ng-app='app.admin')
-    ui-view
-    // build:js({.tmp,src}) scripts/vendor.js
-    // bower:js
+    .container
+      menu
+      ui-view
     script(src='../../angular/angular.js')
     script(src='../../angular-ui-router/release/angular-ui-router.js')
     script(src='../../angular-animate/angular-animate.js')
@@ -32,5 +32,11 @@ html
     // build:js({.tmp,src}) scripts/app.js
     // inject:js
     script(src='admin/admin.js')
+    script(src='admin/menu/menu.controller.js')
+    script(src='admin/menu/menu.component.js')
+    script(src='admin/routes.js')
+    script(src='admin/admin.service.js')
     // endinject
     // endbuild
+  // build:js({.tmp,src}) scripts/vendor.js
+  // bower:js

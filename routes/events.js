@@ -12,6 +12,8 @@ router.get('/search/:text/:page', eventHandler.search);
 
 router.get('/:id', eventHandler.getOne);
 
+router.get('/page/:page', eventHandler.getAll);
+
 router.get('/', eventHandler.getAll);
 
 router.post('/', eventHandler.add);
