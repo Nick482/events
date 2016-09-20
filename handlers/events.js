@@ -46,13 +46,22 @@ function getOne(req, res, next) {
   });
 }
 
-function getAll(req, res, next) {
-	Event.find({}).skip(req.params.page).limit(50).exec(function(err, events){
+function getEvents(req, res, next) {
+	Event.find({}).skip(req.params.page * 50).limit(50).exec(function(err, events){
 	if(err) {
 		return next(err)
 	}
 	res.status(200).send(events);
 	});
+}
+
+function getAll(req, res, next) {
+  Event.find({}, function(err, events){
+  if(err) {
+    return next(err)
+  }
+  res.status(200).send(events);
+  });
 }
 
 function getTop(req, res, next) {
@@ -107,6 +116,7 @@ module.exports = {
 	update: update,
 	getOne: getOne,
 	getAll: getAll,
+  getEvents: getEvents,
 	getTop: getTop,
   search: search,
 	getLatest: getLatest,

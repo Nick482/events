@@ -17,7 +17,7 @@
 
 		$stateProvider
 		.state('categories', {
-			url: '/admin/categories/',
+			url: '/admin/categories',
 			component: 'categories',
 			resolve: {
 				categories: ["adminService", function(adminService){
@@ -28,7 +28,7 @@
 
 		$stateProvider
 		.state('events', {
-			url: '/admin/events/{page}/',
+			url: '/admin/events/{page}',
 			component: 'events',
 			resolve: {
 				events: ["adminService", "$stateParams", function(adminService, $stateParams){

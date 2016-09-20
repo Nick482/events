@@ -22,7 +22,7 @@
 				method: 'GET',
 				url: '/categories/'
 			}).then(function(categories){
-				deferred.resolve(categories);
+				deferred.resolve(categories.data);
 			}).catch(function(err){
 				console.log(err);
 			});
@@ -36,8 +36,8 @@
 			$http({
 				method: 'GET',
 				url: '/events/page/' + page
-			}).then(function(categories){
-				deferred.resolve(categories);
+			}).then(function(events){
+				deferred.resolve(events.data);
 			}).catch(function(err){
 				console.log(err);
 			});
@@ -61,7 +61,7 @@
   				reload: true, inherit: false, notify: true
 			});
 		}
-		
+
 		function prevPage() {
 			var page = parseInt($stateParams.page);
 			page -= 1;

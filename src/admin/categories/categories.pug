@@ -1,1 +1,21 @@
-|categories
+.categories(layout='row')
+	md-content
+		md-list.categories-list
+			md-list-item(ng-click='vm.selectCategory(category)' ng-repeat='category in vm.categories')
+				i.material-icons(ng-click='vm.removeCategory(category)') close
+				p  {{ category.title }}
+				i.material-icons(ng-click='vm.editCategory(category)') mode_edit
+				i.material-icons(ng-click='vm.addSubcategory(category)') add
+			md-list-item(ng-click="vm.addCategory()")
+				p
+					i.material-icons add
+	md-content
+		md-list.subcategories-list
+			md-list-item(ng-click='vm.selectSubcategory()' ng-repeat='subcategory in vm.subcategories')
+				i.material-icons(ng-click='vm.removeSubcategory(subcategory)') close
+				p  {{ subcategory.title }}
+				i.material-icons(ng-click='vm.editSubcategory(subcategory)') mode_edit
+				i.material-icons(ng-click='vm.addEvent(subcategory)') add
+			md-list-item(ng-click="addSubcategory()")
+				md-icon(md-svg-icon='cached')
+				p Data Usage

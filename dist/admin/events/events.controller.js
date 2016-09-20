@@ -7,5 +7,7 @@
 	/** @ngInject */
 	function eventsCtrl(adminService){
 		var vm = this;
+
+		console.log(vm.events);
 	}
 })();
