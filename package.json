@@ -104,7 +104,7 @@
   "engines" : { "node" : "6.4.0" },
   "scripts": {
     "start": "npm install && node bin/www",
-    "postinstall": "bower install && gulp",
+    "postinstall": "bower cache clean && bower install && gulp",
     "build": "gulp",
     "serve": "node bin/www",
     "serve:dist": "gulp serve:dist",
