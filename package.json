@@ -60,7 +60,7 @@
   "engines" : { "node" : "6.4.0" },
   "scripts": {
     "start": "npm install && node bin/www",
-    "postinstall": "bower install",
+    "postinstall": "./node_modules/bower/bin/bower install",
     "build": "gulp",
     "serve": "node bin/www",
     "serve:dist": "gulp serve:dist",
