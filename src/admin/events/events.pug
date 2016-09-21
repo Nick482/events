@@ -1,0 +1,29 @@
+.events(layout='row')
+	md-content.events-list(flex='40')
+		h1 Events:
+		.search(flex='100')
+			md-input-container.input-container
+				label Search
+				input(ng-model='vm.searchText')
+			md-button(ng-click='vm.search()').md-raised Search
+		.navigation(flex='100')
+			md-button(ng-click='vm.prevPage()').md-raised Previous Page
+			md-button(ng-click='vm.nextPage()').md-raised Next Page
+		md-list
+			md-list-item(ng-click='vm.selectEvent(event, $event)' ng-repeat='event in vm.events')
+				i.material-icons.md-secondary(ng-click='vm.removeEvent(event)') close
+				p  {{ event.title }}
+				i.material-icons.md-secondary(ng-click='vm.editEvent(event, $event)') mode_edit
+				i.material-icons.md-secondary(ng-click='vm.addUser(event, $event)') person_add
+				i.material-icons.md-secondary(ng-click='vm.addSession(event, $event)') add
+				md-divider
+			md-list-item(ng-click="vm.addEvent({}, $event)")
+				i.material-icons add
+	md-content.sessions-list(flex='40' flex-offset='10')
+		h1 Sessions:
+		md-list
+			md-list-item(ng-click='vm.selectSession()' ng-repeat='session in vm.sessions')
+				i.material-icons.md-secondary(ng-click='vm.removeSession(session)') close
+				p  {{ session.title }}
+				i.material-icons.md-secondary(ng-click='vm.editSession(session, $event)') mode_edit
+				md-divider

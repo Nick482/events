@@ -81,17 +81,26 @@
             var event = {};
 
             event.sendEvent = eventsService.addEvent;
-            event.subcategory = subcategory._id;
+            if(subcategory._id) {
+                event.subcategory._id = subcategory._id;
+            } else {
+                categoriesService.getCategories().then(function(categories){
+                    event.categories = categories;
+                    openDialog();
+                });
+            }
 
-            $mdDialog.show({
-                templateUrl: 'admin/dialogService/templates/eventForm.html',
-                controller: function() {
-                    this.parent = event;
-                },
-                controllerAs: 'vm',
-                targetEvent: ev,
-                clickOutsideToClose:true
-            })
+            function openDialog(){
+                $mdDialog.show({
+                    templateUrl: 'admin/dialogService/templates/eventForm.html',
+                    controller: function() {
+                        this.parent = event;
+                    },
+                    controllerAs: 'vm',
+                    targetEvent: ev,
+                    clickOutsideToClose:true
+                })
+            }
         }
 
         function openEditEventForm(event, ev) {
@@ -107,7 +116,10 @@
             })
         }
 
-        function openAddSessionForm(session, ev) {
+        function openAddSessionForm(event, ev) {
+            var session = {};
+
+            session.event = event._id;
             session.sendSession = eventsService.addSession;
             $mdDialog.show({
                 templateUrl: 'admin/dialogService/templates/sessionForm.html',
@@ -133,8 +145,14 @@
             })
         }
 
-        function openAddUserForm(user, ev) {
+        function openAddUserForm(event, ev) {
+            var user = {};
+            console.log(event);
+
             user.sendUser = eventsService.addUser;
+            user.event = event._id;
+            user.eventSessionList = event.eventSessions;
+
             $mdDialog.show({
                 templateUrl: 'admin/dialogService/templates/userForm.html',
                 controller: function() {

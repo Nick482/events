@@ -14,4 +14,8 @@ router.put('/', adminHandler.update);
 
 router.delete('/:id', adminHandler.remove);
 
+router.use('/', function(req, res, next){
+	res.render('admin', {title: "Express"});
+});
+
 module.exports = router;

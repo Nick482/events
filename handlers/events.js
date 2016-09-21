@@ -49,7 +49,7 @@ function getOne(req, res, next) {
 }
 
 function getEvents(req, res, next) {
-	Event.find({}).skip(req.params.page * 50).limit(50).exec(function(err, events){
+	Event.find({}).skip(req.params.page * 50).limit(50).populate('eventSessions').exec(function(err, events){
 	if(err) {
 		return next(err)
 	}

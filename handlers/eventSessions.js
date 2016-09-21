@@ -53,11 +53,11 @@ function update(req, res, next) {
 }
 
 function remove(req, res, next) {
-	EventSession.findByIdAndDelete(req.params.id).exec(function(err, eventSession){
+	EventSession.findByIdAndRemove(req.params.id).exec(function(err, eventSession){
 		if(err){
 			return next(err)
 		}
-		res.status(200)
+		res.status(200).send(eventSession);
 	})
 }
 

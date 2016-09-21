@@ -2,7 +2,36 @@ md-dialog(ng-cloak='')
 	form(layout='column', layout-align='center center')
 		md-dialog-content
 			.md-dialog-content
-				h2 {{vm.parent.title}}
-				p {{vm.parent.text}}
+				form(name='sessionForm')
+					md-input-container(flex='100')
+						label Title
+						input(required name='sessionTitle' ng-model='vm.parent.title')
+						div(ng-messages='sessionForm.sessionTitle.$error')
+							div(ng-message='required') This is required.
+					md-input-container(flex='100')
+						label Start
+						md-datepicker(required name='sessionStart' ng-model='vm.parent.start')
+						div(ng-messages='sessionForm.sessionStart.$error')
+							div(ng-message='required') This is required.
+					md-input-container(flex='100')
+						label End
+						md-datepicker(required name='sessionEnd' ng-model='vm.parent.end')
+						div(ng-messages='sessionForm.sessionEnd.$error')
+							div(ng-message='required') This is required.
+					md-input-container(flex='100')
+						label Host
+						input(required name='sessionHost' ng-model='vm.parent.host')
+						div(ng-messages='sessionForm.sessionHost.$error')
+							div(ng-message='required') This is required.
+					md-input-container(flex='100')
+						label Status
+						input(required type='number' min='0' max='3' name='sessionStatus' ng-model='vm.parent.status')
+						div(ng-messages='sessionForm.sessionStatus.$error')
+							div(ng-message='required') This is required.
+					md-input-container(flex='100')
+						label Limit
+						input(required  type='number' name='sessionLimit' ng-model='vm.parent.limit')
+						div(ng-messages='sessionForm.sessionLimit.$error')
+							div(ng-message='required') This is required.
 		md-dialog-actions(layout='row', layout-align='center')
-			md-button(ng-click='vm.parent.ok()') OK
+			md-button(ng-disabled='sessionForm.$invalid' ng-click='vm.parent.sendSession(vm.parent)') Confirm

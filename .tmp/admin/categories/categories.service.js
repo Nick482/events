@@ -8,6 +8,7 @@
   function categoriesService($q, $http, $state, $mdDialog){
 
     return {
+      getCategories: getCategories,
       getSubcategories: getSubcategories,
       addCategory: addCategory,
       editCategory: editCategory,
@@ -16,6 +17,20 @@
       removeCategory: removeCategory,
       removeSubcategory: removeSubcategory
     };
+
+    function getCategories(){
+      var deferred = $q.defer();
+
+      $http({
+        method: 'GET',
+        url: '/categories/'
+      }).then(function(categories){
+        deferred.resolve(categories.data);
+      }).catch(function(err){
+        console.log(err);
+      });
+      return deferred.promise;
+    }
 
     function getSubcategories(id){
       var deferred = $q.defer();

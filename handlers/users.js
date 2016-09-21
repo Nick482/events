@@ -67,7 +67,7 @@ function remove(req, res, next) {
 		if(err){
 			return next(err)
 		}
-		res.status(200);
+		res.status(200).send(user);
 	})
 }
 

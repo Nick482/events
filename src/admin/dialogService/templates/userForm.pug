@@ -1,8 +1,28 @@
 md-dialog(ng-cloak='')
-	form(layout='column', layout-align='center center')
-		md-dialog-content
-			.md-dialog-content
-				h2 {{vm.parent.title}}
-				p {{vm.parent.text}}
-		md-dialog-actions(layout='row', layout-align='center')
-			md-button(ng-click='vm.parent.ok()') OK
+	form(name='parentForm')
+		.name(layout='row')
+			md-input-container(flex='50')
+				label First Name
+				input(required name='firstName' ng-model='vm.parent.firstName')
+				div(ng-messages="projectForm.clientName.$error")
+					div(ng-message="required") This is required.
+			md-input-container(flex='50')
+				label Last Name
+				input(required name='lastName' ng-model='vm.parent.lastName')
+				div(ng-messages="projectForm.clientName.$error")
+					div(ng-message="required") This is required.
+		.contact-info(layout='row')
+			md-input-container
+				label Email
+				input(required name='email' ng-model='vm.parent.email' type='email')
+				div(ng-messages="projectForm.clientName.$error")
+					div(ng-message="required") This is required.
+			md-input-container
+				label Phone
+				input(name='phone' ng-model='vm.parent.phone')
+		md-input-container.session-selection
+			label Sessions
+			md-select(ng-model='vm.parent.eventSessions' multiple='' required)
+				md-optgroup(label='Sessions')
+					md-option(ng-value='session._id' ng-repeat="session in vm.parent.eventSessionList") {{session.title}}
+		md-button(ng-click='vm.parent.sendUser(vm.parent)' ng-disabled="parentForm.$invalid").md-raised.md-primary Sign Up

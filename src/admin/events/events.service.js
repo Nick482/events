@@ -12,7 +12,9 @@
             addSession: addSession,
             editSession: editSession,
             addUser: addUser,
-            editUser: editUser
+            removeEvent: removeEvent,
+            removeSession: removeSession,
+            selectEvent: selectEvent
         };
 
         function addEvent(event){
@@ -46,7 +48,7 @@
             $mdDialog.hide();
             $http({
                 method: 'POST',
-                url: '/sessions/',
+                url: '/eventSessions/',
                 data: session
             }).then(function(){
                 alert('session added');
@@ -59,7 +61,7 @@
             $mdDialog.hide();
             $http({
                 method: 'PUT',
-                url: '/sessions/',
+                url: '/eventSessions/',
                 data: session
             }).then(function(){
                 alert('session edited');
@@ -75,7 +77,7 @@
                 url: '/users/',
                 data: user
             }).then(function(){
-                alert('users registered successfully');
+                alert('user registered successfully');
             }).catch(function(err){
                 alert(err);
             });
@@ -92,6 +94,59 @@
             }).catch(function(err){
                 alert(err);
             });
+        }
+
+        function removeEvent(event){
+            $http({
+                method: 'DELETE',
+                url: '/events/' + event._id
+            }).then(function(event){
+                alert('event deleted');
+            }).catch(function(err){
+                console.log(err);
+            });
+        }
+
+        function removeSession(session){
+            $http({
+                method: 'DELETE',
+                url: '/eventSessions/' + session._id
+            }).then(function(session){
+                alert('session deleted');
+            }).catch(function(err){
+                console.log(err);
+            })
+        }
+
+        function findEvents(text, page) {
+            var deferred = $q.defer();
+
+            $http({
+                method: 'GET',
+                url: '/events/search/' + text + '/' + page
+            }).then(function(events){
+                deferred.resolve(events);
+            }).catch(function(err){
+                console.log(err)
+            });
+
+            return deferred.promise;
+        }
+
+        function selectEvent(event){
+            var deferred = $q.defer();
+
+            $http({
+                method: 'GET',
+                url: '/events/' + event._id
+            }).then(function(event){
+                deferred.resolve(event.data.eventSessions);
+                console.log(event);
+            }).catch(function(err){
+                console.log(err)
+            });
+
+            return deferred.promise;
         }
     }
 })();
