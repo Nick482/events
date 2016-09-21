@@ -2,7 +2,46 @@ md-dialog(ng-cloak='')
 	form(layout='column', layout-align='center center')
 		md-dialog-content
 			.md-dialog-content
-				h2 {{vm.parent.title}}
-				p {{vm.parent.text}}
+				form(name='eventForm')
+					md-input-container(flex='100')
+						label Title
+						input(required name='eventTitle' ng-model='vm.parent.title')
+						div(ng-messages='eventForm.eventTitle.$error')
+							div(ng-message='required') This is required.
+					md-input-container(flex='100')
+						label Start
+						md-datepicker(required name='eventStart' ng-model='vm.parent.start')
+						div(ng-messages='eventForm.eventStart.$error')
+							div(ng-message='required') This is required.
+					md-input-container(flex='100')
+						label End
+						md-datepicker(required name='eventEnd' ng-model='vm.parent.end')
+						div(ng-messages='eventForm.eventEnd.$error')
+							div(ng-message='required') This is required.
+					md-input-container(flex='100')
+						label Place
+						input(required name='eventPlace' ng-model='vm.parent.place')
+						div(ng-messages='eventForm.eventPlace.$error')
+							div(ng-message='required') This is required.
+					md-input-container(flex='100')
+						label Host
+						input(required name='eventHost' ng-model='vm.parent.host')
+						div(ng-messages='eventForm.eventHost.$error')
+							div(ng-message='required') This is required.
+					md-input-container(flex='100')
+						label Status
+						input(required type='number' min='0' max='3' name='eventStatus' ng-model='vm.parent.status')
+						div(ng-messages='eventForm.eventStatus.$error')
+							div(ng-message='required') This is required.
+					md-input-container(flex='100')
+						label Limit
+						input(required  type='number' name='eventLimit' ng-model='vm.parent.limit')
+						div(ng-messages='eventForm.eventLimit.$error')
+							div(ng-message='required') This is required.
+					md-input-container(flex='100')
+						label Description
+						input(required name='eventDescription' ng-model='vm.parent.description')
+						div(ng-messages='eventForm.eventDescription.$error')
+							div(ng-message='required') This is required.
 		md-dialog-actions(layout='row', layout-align='center')
-			md-button(ng-click='vm.parent.ok()') OK
+			md-button(ng-disabled='eventForm.$invalid' ng-click='vm.parent.sendEvent(vm.parent)') Confirm

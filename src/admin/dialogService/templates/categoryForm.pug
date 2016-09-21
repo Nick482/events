@@ -2,7 +2,11 @@ md-dialog(ng-cloak='')
 	form(layout='column', layout-align='center center')
 		md-dialog-content
 			.md-dialog-content
-				h2 {{vm.parent.title}}
-				p {{vm.parent.text}}
+				form(name='categoryForm')
+					md-input-container(flex='100')
+						label Title
+						input(required name='categoryTitle' ng-model='vm.parent.title')
+						div(ng-messages='categoryForm.categoryTitle.$error')
+							div(ng-message='required') This is required.
 		md-dialog-actions(layout='row', layout-align='center')
-			md-button(ng-click='vm.parent.ok()') OK
+			md-button(ng-disabled='categoryForm.$invalid' ng-click='vm.parent.sendCategory(vm.parent)') Confirm

@@ -5,6 +5,8 @@ var Subcategory = require('../models/Subcategory');
 function add(req, res, next) {
 	var event = new Event(req.body);
 
+  event.freeSeats = event.limit;
+
   Subcategory.findById(event.subcategory, function(err, subcategory){
     if (err) {
       return next(err);

@@ -12,6 +12,6 @@ router.post('/', adminHandler.add);
 
 router.put('/', adminHandler.update);
 
-router.delete('/', adminHandler.remove);
+router.delete('/:id', adminHandler.remove);
 
 module.exports = router;

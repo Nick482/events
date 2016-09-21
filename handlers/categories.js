@@ -34,11 +34,11 @@ function getAll(req, res, next){
 }
 
 function update(req, res, next){
-	Category.findByIdAndUpdate(req.body._id, rea.body).exec(function(err, category){
+	Category.findByIdAndUpdate(req.body._id, req.body).exec(function(err, category){
 		if(err){
 			return next(err)
 		}
-		res.status(200);
+		res.status(200).send(category);
 	})
 }
 

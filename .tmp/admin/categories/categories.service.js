@@ -1,18 +1,20 @@
 (function(){
-  categoriesService.$inject = ["$q", "$http"];
+  categoriesService.$inject = ["$q", "$http", "$state", "$mdDialog"];
   angular
   .module('app.admin')
   .factory('categoriesService', categoriesService);
 
   /** @ngInject */
-  function categoriesService($q, $http){
+  function categoriesService($q, $http, $state, $mdDialog){
 
     return {
       getSubcategories: getSubcategories,
       addCategory: addCategory,
       editCategory: editCategory,
       addSubcategory: addSubcategory,
-      editSubcategory: editSubcategory
+      editSubcategory: editSubcategory,
+      removeCategory: removeCategory,
+      removeSubcategory: removeSubcategory
     };
 
     function getSubcategories(id){
@@ -30,44 +32,82 @@
     }
 
     function addCategory(category){
+      $mdDialog.hide();
       $http({
         method: 'POST',
-        url: '/categories/'
+        url: '/categories/',
+        data: category
       }).then(function(category){
-        alert('Category added')
+        alert('Category added');
+        $state.reload();
       }).catch(function(err){
         alert(err);
       })
     }
 
     function editCategory(category){
+      $mdDialog.hide();
       $http({
         method: 'PUT',
-        url: '/categories/'
+        url: '/categories/',
+        data: category
       }).then(function(category){
-        alert('Category modified')
+        alert('Category modified');
+        $state.reload();
       }).catch(function(err){
         alert(err);
       })
     }
 
     function addSubcategory(subcategory){
+      $mdDialog.hide();
       $http({
         method: 'POST',
-        url: '/subcategories/'
+        url: '/subcategories/',
+        data: subcategory
       }).then(function(subcategory){
-        alert('Subcategory added')
+        alert('Subcategory added');
+        $state.reload();
       }).catch(function(err){
         alert(err);
       })
     }
 
     function editSubcategory(subcategory){
+      $mdDialog.hide();
       $http({
         method: 'PUT',
-        url: '/subcategories/'
+        url: '/subcategories/',
+        data: subcategory
       }).then(function(subcategory){
-        alert('Subcategory modified')
+        alert('Subcategory modified');
+        $state.reload();
+      }).catch(function(err){
+        alert(err);
+      })
+    }
+
+    function removeCategory(category){
+      $mdDialog.hide();
+      $http({
+        method: 'DELETE',
+        url: '/categories/' + category._id
+      }).then(function(category){
+        alert('category deleted');
+        $state.reload();
+      }).catch(function(err){
+        alert(err);
+      })
+    }
+
+    function removeSubcategory(subcategory){
+      $mdDialog.hide();
+      $http({
+        method: 'DELETE',
+        url: '/subcategories/' + subcategory._id
+      }).then(function(subcategory){
+        alert('subcategory deleted');
+        $state.reload();
       }).catch(function(err){
         alert(err);
       })

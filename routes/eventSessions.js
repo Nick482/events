@@ -10,6 +10,6 @@ router.post('/', eventSessionHandler.add);
 
 router.put('/', eventSessionHandler.update);
 
-router.delete('/', eventSessionHandler.remove);
+router.delete('/:id', eventSessionHandler.remove);
 
 module.exports = router;

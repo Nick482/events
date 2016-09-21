@@ -11,7 +11,7 @@ router.post('/', userHandler.add);
 
 router.put('/', userHandler.update);
 
-router.delete('/', userHandler.remove);
+router.delete('/:id', userHandler.remove);
 
 
 module.exports = router;

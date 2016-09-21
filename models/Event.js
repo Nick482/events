@@ -34,8 +34,7 @@ var eventSchema = new mongoose.Schema({
 		required: true
 	},
 	freeSeats: {
-		type: Number,
-		required: true
+		type: Number
 	},
 	users: [{
 		type: mongoose.Schema.Types.ObjectId, ref: 'User'

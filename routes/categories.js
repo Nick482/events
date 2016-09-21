@@ -10,6 +10,6 @@ router.post('/', categoryHandler.add);
 
 router.put('/', categoryHandler.update);
 
-router.delete('/', categoryHandler.remove);
+router.delete('/:id', categoryHandler.remove);
 
 module.exports = router;

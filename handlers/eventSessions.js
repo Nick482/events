@@ -4,6 +4,8 @@ var Event = require('../models/Event');
 function add(req, res, next) {
 	var eventSession = new EventSession(req.body);
 
+	eventSession.freeSeats = eventSession.limit;
+
 	Event.findById(eventSession.event, function(err, event){
 		if(err){
 			return next(err);

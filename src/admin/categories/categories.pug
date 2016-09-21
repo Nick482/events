@@ -1,20 +1,21 @@
 .categories(layout='row')
-	md-content
-		md-list.categories-list
-			md-list-item(ng-click='vm.selectCategory(category)' ng-repeat='category in vm.categories')
-				i.material-icons(ng-click='vm.removeCategory(category)') close
+	md-content.categories-list(flex='40')
+		h1 Categories:
+		md-list
+			md-list-item(ng-click='vm.selectCategory(category, $event)' ng-repeat='category in vm.categories')
+				i.material-icons.md-secondary(ng-click='vm.removeCategory(category)') close
 				p  {{ category.title }}
-				i.material-icons(ng-click='vm.editCategory(category)') mode_edit
-				i.material-icons(ng-click='vm.addSubcategory(category)') add
-			md-list-item(ng-click="vm.addCategory()")
+				i.material-icons.md-secondary(ng-click='vm.editCategory(category, $event)') mode_edit
+				i.material-icons.md-secondary(ng-click='vm.addSubcategory(category, $event)') add
+				md-divider
+			md-list-item(ng-click="vm.addCategory({}, $event)")
 				i.material-icons add
-	md-content
-		md-list.subcategories-list
+	md-content.subcategories-list(flex='40' flex-offset='10')
+		h1 Subcategories:
+		md-list
 			md-list-item(ng-click='vm.selectSubcategory()' ng-repeat='subcategory in vm.subcategories')
-				i.material-icons(ng-click='vm.removeSubcategory(subcategory)') close
+				i.material-icons.md-secondary(ng-click='vm.removeSubcategory(subcategory)') close
 				p  {{ subcategory.title }}
-				i.material-icons(ng-click='vm.editSubcategory(subcategory)') mode_edit
-				i.material-icons(ng-click='vm.addEvent(subcategory)') add
-			md-list-item(ng-click="addSubcategory()")
-				md-icon(md-svg-icon='cached')
-				i.material-icons(ng-click='vm.addSubcategory(category)') add
+				i.material-icons.md-secondary(ng-click='vm.editSubcategory(subcategory, $event)') mode_edit
+				i.material-icons.md-secondary(ng-click='vm.addEvent(subcategory, $event)') add
+				md-divider

@@ -19,11 +19,11 @@
             openEditUserForm: openEditUserForm
         };
 
-        function openAddCategoryForm(category) {
+        function openAddCategoryForm(category, ev) {
             category.sendCategory = categoriesService.addCategory;
 
             $mdDialog.show({
-                templateUrl: '../templates/categoryForm.html',
+                templateUrl: 'admin/dialogService/templates/categoryForm.html',
                 controller: function() {
                     this.parent = category;
                 },
@@ -33,11 +33,11 @@
             })
         }
 
-        function openEditCategoryForm(category) {
+        function openEditCategoryForm(category, ev) {
             category.sendCategory = categoriesService.editCategory;
 
             $mdDialog.show({
-                templateUrl: '../templates/categoryForm.html',
+                templateUrl: 'admin/dialogService/templates/categoryForm.html',
                 controller: function() {
                     this.parent = category;
                 },
@@ -47,11 +47,13 @@
             })
         }
 
-        function openAddSubcategoryForm(subcategory) {
+        function openAddSubcategoryForm(category, ev) {
+            var subcategory = {};
+            subcategory.category = category._id;
             subcategory.sendSubcategory = categoriesService.addSubcategory;
 
             $mdDialog.show({
-                templateUrl: '../templates/subcategoryForm.html',
+                templateUrl: 'admin/dialogService/templates/subcategoryForm.html',
                 controller: function() {
                     this.parent = subcategory;
                 },
@@ -61,11 +63,11 @@
             })
         }
 
-        function openEditSubcategoryForm(subcategory){
+        function openEditSubcategoryForm(subcategory, ev){
             subcategory.sendSubcategory = categoriesService.editSubcategory;
 
             $mdDialog.show({
-                templateUrl: '../templates/subcategoryForm.html',
+                templateUrl: 'admin/dialogService/templates/subcategoryForm.html',
                 controller: function() {
                     this.parent = subcategory;
                 },
@@ -75,10 +77,14 @@
             })
         }
 
-        function openAddEventForm(event) {
+        function openAddEventForm(subcategory, ev) {
+            var event = {};
+
             event.sendEvent = eventsService.addEvent;
+            event.subcategory = subcategory._id;
+
             $mdDialog.show({
-                templateUrl: '../templates/eventForm.html',
+                templateUrl: 'admin/dialogService/templates/eventForm.html',
                 controller: function() {
                     this.parent = event;
                 },
@@ -88,10 +94,10 @@
             })
         }
 
-        function openEditEventForm(event) {
+        function openEditEventForm(event, ev) {
             event.sendEvent = eventsService.editEvent;
             $mdDialog.show({
-                templateUrl: '../templates/eventForm.html',
+                templateUrl: 'admin/dialogService/templates/eventForm.html',
                 controller: function() {
                     this.parent = event;
                 },
@@ -101,10 +107,10 @@
             })
         }
 
-        function openAddSessionForm(session) {
+        function openAddSessionForm(session, ev) {
             session.sendSession = eventsService.addSession;
             $mdDialog.show({
-                templateUrl: '../templates/sessionForm.html',
+                templateUrl: 'admin/dialogService/templates/sessionForm.html',
                 controller: function() {
                     this.parent = session;
                 },
@@ -114,10 +120,10 @@
             })
         }
 
-        function openEditSessionForm(session) {
+        function openEditSessionForm(session, ev) {
             session.sendSession = eventsService.editSession;
             $mdDialog.show({
-                templateUrl: '../templates/sessionForm.html',
+                templateUrl: 'admin/dialogService/templates/sessionForm.html',
                 controller: function() {
                     this.parent = session;
                 },
@@ -127,10 +133,10 @@
             })
         }
 
-        function openAddUserForm(user) {
+        function openAddUserForm(user, ev) {
             user.sendUser = eventsService.addUser;
             $mdDialog.show({
-                templateUrl: '../templates/userForm.html',
+                templateUrl: 'admin/dialogService/templates/userForm.html',
                 controller: function() {
                     this.parent = user;
                 },
@@ -140,10 +146,10 @@
             })
         }
 
-        function openEditUserForm(user) {
+        function openEditUserForm(user, ev) {
             user.sendUser = eventsService.editUser;
             $mdDialog.show({
-                templateUrl: '../templates/userForm.html',
+                templateUrl: 'admin/dialogService/templates/userForm.html',
                 controller: function() {
                     this.parent = user;
                 },
