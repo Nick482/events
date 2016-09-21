@@ -31,11 +31,11 @@
 
 		vm.nextPage = function(){
 			vm.page +=1;
-			search();
+			vm.search();
 		}
 		vm.prevPage = function(){
 			vm.page -=1;
-			search();
+			vm.search();
 		}
 	}
 })();

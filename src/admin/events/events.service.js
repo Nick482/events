@@ -11,6 +11,7 @@
             editEvent: editEvent,
             addSession: addSession,
             editSession: editSession,
+            findEvents: findEvents,
             addUser: addUser,
             removeEvent: removeEvent,
             removeSession: removeSession,
@@ -125,7 +126,7 @@
                 method: 'GET',
                 url: '/events/search/' + text + '/' + page
             }).then(function(events){
-                deferred.resolve(events);
+                deferred.resolve(events.data);
             }).catch(function(err){
                 console.log(err)
             });
