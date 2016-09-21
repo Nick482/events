@@ -85,7 +85,7 @@ function getClosest(req, res, next) {
 }
 
 function getLatest(req, res, next) {
-	Event.find({status: {$in: [2,3]}}).sort('-date_added').limit(12).exec(function(err, events){
+	Event.find({status: {$in: [2,3]}}).sort('-date_added').limit(8).exec(function(err, events){
     if(err) {
       return next(err);
     }

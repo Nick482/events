@@ -4,7 +4,7 @@
 	.controller('searchCtrl', searchCtrl);
 
 	/** @ngInject */
-	function searchCtrl(navigationService){
+	function searchCtrl(navigationService, $stateParams){
 		var vm = this;
 		vm.disablePrevButton = !parseInt($stateParams.page);
 

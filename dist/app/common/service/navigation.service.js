@@ -28,8 +28,8 @@
 			$state.go(dest);
 		}
 
-		function goToSearch(text, page){
-			$state.go('search', {searchText: text, searchPage: page})
+		function goToSearch(text){
+			$state.go('search', {searchText: text, page: 0})
 		}
 		function nextPage() {
 			var page = parseInt($stateParams.page);
