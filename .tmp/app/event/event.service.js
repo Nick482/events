@@ -1,11 +1,11 @@
 (function(){
-	eventService.$inject = ["$http", "$q", "dialogService"];
+	eventService.$inject = ["$http", "$q", "dialogService", "$state"];
 	angular
 	.module('app')
 	.factory('eventService', eventService);
 
 	/** @ngInject */
-	function eventService($http, $q, dialogService) {
+	function eventService($http, $q, dialogService, $state) {
 
 		return {
 			getEvent: getEvent,
@@ -47,7 +47,8 @@
 				url: '/users/',
 				data: user
 			}).then(function(user){
-				dialogService.showDialog({title: 'Success', text: 'Successfully signed up!'})
+				dialogService.showDialog({title: 'Success', text: 'Successfully signed up!'});
+				$state.reload();
 			}).catch(function(err){
 				dialogService.showDialog({title: 'Error', text: 'An error occured'});
 			});
