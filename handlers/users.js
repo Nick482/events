@@ -5,14 +5,12 @@ var EventSession = require('../models/EventSession');
 
 function add(req, res, next) {
 	var user = new User(req.body);
-	console.log(req.body);
-	console.log(user);
 	function saveUser(err, session){
 		user.save(function(err, user){
 			if(err){
 				return next(err)
 			}
-			res.status(201).send(user);
+			next();
 		});
 	};
 	function updateSessions(err, event) {

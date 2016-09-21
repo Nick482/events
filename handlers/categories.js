@@ -16,7 +16,6 @@ function add(req, res, next){
 
 function getOne(req, res, next){
 	Category.findById(req.params.id).populate('subcategories').exec(function(err, category){
-		console.log(category);
 		if(err){
 			return next(err);
 		}
