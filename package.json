@@ -58,7 +58,7 @@
     "wiredep": "^4.0.0"
   },
   "scripts": {
-    "start": "gulp && node bin/www",
+    "start": "node bin/www",
     "build": "gulp",
     "serve": "node bin/www",
     "serve:dist": "gulp serve:dist",

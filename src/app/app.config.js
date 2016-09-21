@@ -5,5 +5,5 @@
     $mdThemingProvider.theme('docs-dark', 'default')
       .primaryPalette('yellow')
       .dark();
-  });
+  	});
 })();

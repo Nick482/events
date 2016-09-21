@@ -10,7 +10,6 @@
 		vm.user = {};
 		vm.event.status < 2 ? vm.inactiveEvent = true: vm.inactiveEvent = false;
 		vm.openForm = function(){
-			console.log('here')
 			vm.showForm = !vm.showForm;
 		}
 		vm.signUp = function(){
