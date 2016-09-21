@@ -1,5 +1,5 @@
 .categories(layout='row')
-	md-content.categories-list(flex='40')
+	md-content.categories-list(flex-offset='5' flex='40')
 		h1 Categories:
 		md-list
 			md-list-item(ng-click='vm.selectCategory(category, $event)' ng-repeat='category in vm.categories')
