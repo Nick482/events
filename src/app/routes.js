@@ -27,7 +27,7 @@
 
 		$stateProvider
 		.state('search', {
-			url: '/search/{searchText}/{page}',
+			url: '/search/{searchText}/{page}/',
 			component: 'search',
 			resolve: {
 				results: function(eventService, $stateParams){
@@ -38,7 +38,7 @@
 
 		$stateProvider
 		.state('categories', {
-			url: '/categories',
+			url: '/browseCategories/',
 			component: 'categories',
 			resolve: {
 				categories: function(categoryService){
@@ -49,7 +49,7 @@
 
 		$stateProvider
 		.state('subcategory', {
-			url: '/subcategory/{subcategoryID}/{page}',
+			url: '/subcategory/{subcategoryID}/{page}/',
 			component: 'subcategory',
 			resolve: {
 				events: function(categoryService, $stateParams){
