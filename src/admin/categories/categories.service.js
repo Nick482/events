@@ -4,7 +4,7 @@
   .factory('categoriesService', categoriesService);
 
   /** @ngInject */
-  function categoriesService($q, $http, $state, $mdDialog){
+  function categoriesService($q, $http, $state, $stateParams, $mdDialog){
 
     return {
       getCategories: getCategories,

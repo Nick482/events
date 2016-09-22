@@ -26,6 +26,7 @@
                 url: '/events/',
                 data: event
             }).then(function(){
+                $state.reload();
                 alert('event added');
             }).catch(function(err){
                 alert(err);
@@ -40,6 +41,7 @@
                 data: event
             }).then(function(){
                 alert('event edited');
+                $state.reload();
             }).catch(function(err){
                 alert(err);
             });
@@ -103,6 +105,7 @@
                 url: '/events/' + event._id
             }).then(function(event){
                 alert('event deleted');
+                $state.reload();
             }).catch(function(err){
                 console.log(err);
             });
