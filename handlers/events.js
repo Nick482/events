@@ -104,7 +104,7 @@ function search(req, res, next) {
 }
 
 function remove(req, res, next) {
-	Event.findByIdAndRemove(req.query.id).exec(function(err, event){
+	Event.findByIdAndRemove(req.params.id).exec(function(err, event){
 	if(err) {
 		return next(err)
 	}

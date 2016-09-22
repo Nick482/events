@@ -10,12 +10,12 @@ md-dialog(ng-cloak='')
 							div(ng-message='required') This is required.
 					md-input-container(flex='100')
 						label Start
-						md-datepicker(required name='sessionStart' ng-model='vm.parent.start')
+						input(required name='sessionStart' ng-model='vm.parent.start' type='datetime-local')
 						div(ng-messages='sessionForm.sessionStart.$error')
 							div(ng-message='required') This is required.
 					md-input-container(flex='100')
 						label End
-						md-datepicker(required name='sessionEnd' ng-model='vm.parent.end')
+						input(required name='sessionEnd' ng-model='vm.parent.end' type='datetime-local')
 						div(ng-messages='sessionForm.sessionEnd.$error')
 							div(ng-message='required') This is required.
 					md-input-container(flex='100')

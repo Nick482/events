@@ -23,12 +23,12 @@ md-dialog(ng-cloak='')
 								div(ng-message='required') This is required.
 					md-input-container(flex='100')
 						label Start
-						md-datepicker(required name='eventStart' ng-model='vm.parent.start')
+						input(required name='eventStart' ng-model='vm.parent.start' type='datetime-local')
 						div(ng-messages='eventForm.eventStart.$error')
 							div(ng-message='required') This is required.
 					md-input-container(flex='100')
 						label End
-						md-datepicker(required name='eventEnd' ng-model='vm.parent.end')
+						input(required name='eventEnd' ng-model='vm.parent.end' type='datetime-local')
 						div(ng-messages='eventForm.eventEnd.$error')
 							div(ng-message='required') This is required.
 					md-input-container(flex='100')

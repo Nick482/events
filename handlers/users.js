@@ -10,8 +10,11 @@ function add(req, res, next) {
 			if(err){
 				return next(err)
 			}
+			User.findById(user._id).populate('event eventSessions').exec(function(err, userPop){
+			req.body = userPop;
 			next();
-		});
+			})
+			});
 	};
 	function updateSessions(err, event) {
 		EventSession.update({_id: {$in: user.sessions}}, {$push: {users: user._id}}, saveUser);

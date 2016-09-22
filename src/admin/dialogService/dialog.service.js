@@ -101,6 +101,8 @@
 
         function openEditEventForm(event, ev) {
             event.sendEvent = eventsService.editEvent;
+            event.start = new Date(event.start);
+            event.end = new Date(event.end);
             $mdDialog.show({
                 templateUrl: 'admin/dialogService/templates/eventForm.html',
                 controller: function() {
@@ -130,6 +132,8 @@
 
         function openEditSessionForm(session, ev) {
             session.sendSession = eventsService.editSession;
+            session.start = new Date(session.start);
+            session.end = new Date(session.end);
             $mdDialog.show({
                 templateUrl: 'admin/dialogService/templates/sessionForm.html',
                 controller: function() {

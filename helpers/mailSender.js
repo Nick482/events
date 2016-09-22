@@ -7,7 +7,8 @@ function send(req, res, next){
 	    from: '"E-vents" <events.mail.sender@gmail.com>',
 	    to: req.body.email,
 	    subject: 'Hello ✔',
-	    html: '<b>Hello world 🐴</b>'
+	    html: '<h1>Thank you for registering!</h1><p>Hello, ' + req.body.firstName + '. Thank you for using our service. ' +
+	    'You have signed up for ' + req.body.event.title + '</p>'
 	};
 
 	transporter.sendMail(mailOptions, function(error, info){
