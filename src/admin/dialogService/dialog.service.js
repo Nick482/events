@@ -81,14 +81,10 @@
             var event = {};
 
             event.sendEvent = eventsService.addEvent;
-            if(subcategory._id) {
-                event.subcategory._id = subcategory._id;
-            } else {
-                categoriesService.getCategories().then(function(categories){
-                    event.categories = categories;
-                    openDialog();
-                });
-            }
+            categoriesService.getCategories().then(function(categories){
+                event.categories = categories;
+                openDialog();
+            });
 
             function openDialog(){
                 $mdDialog.show({
