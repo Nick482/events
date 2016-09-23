@@ -11,6 +11,10 @@ var adminSchema = new mongoose.Schema({
 	}
 });
 
+adminSchema.methods.validPassword = function(password) {
+    return (password === this.password);
+};
+
 var Admin = mongoose.model('Admin', adminSchema);
 
 module.exports = Admin;

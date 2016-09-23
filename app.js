@@ -4,6 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var routes = require('./routes/index');
+var passport = require('./helpers/passportConfig');
 var app = express();
 
 
@@ -20,8 +23,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
-
-var routes = require('./routes/index');
+app.use(session({
+	secret: 'keyboard cat',
+	resave: true,
+	saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use('/', routes);
 
 module.exports = app;

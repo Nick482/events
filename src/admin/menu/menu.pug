@@ -1,13 +1,4 @@
-.logo(ng-click='vm.goTo("admin")')
-	img.logo-img(src='/app/common/img/events_logo.png')
-md-nav-bar.hide-xs(flex='40' layout='row')
+md-nav-bar.hide-xs(flex='100' layout='row')
 	md-nav-item(aria-label='' flex='100' md-nav-click='vm.goTo("categories")') Categories
 	md-nav-item(aria-label='' flex='100' md-nav-click='vm.goToEvents("events", 0)') Events
-
-
-
-//- .search.hide-xs(flex='50')
-//- 	md-input-container.input-container
-//- 		label Search
-//- 		input(ng-model='vm.searchText')
-//- 	md-button(ng-click='vm.search()').md-raised Search
+	md-nav-item(flex-offset='90' md-nav-click='vm.logout()') Log Out

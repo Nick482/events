@@ -12,6 +12,17 @@
 		.state('home', {
 			url: '/admin/',
 			component: 'home',
+			resolve: {
+				verified: function(adminService) {
+					return adminService.verify();
+				}
+			}
+		});
+
+		$stateProvider
+		.state('login', {
+			url: '/admin/login/',
+			component: 'login'
 		});
 
 		$stateProvider
@@ -19,9 +30,12 @@
 			url: '/admin/categories/',
 			component: 'categories',
 			resolve: {
+				verified: function(adminService){
+					return adminService.verify();
+				},
 				categories: function(adminService){
 					return adminService.getCategories();
-				}
+				},
 			}
 		});
 
@@ -30,6 +44,9 @@
 			url: '/admin/events/{page}/',
 			component: 'events',
 			resolve: {
+				verified: function(adminService){
+					return adminService.verify();
+				},
 				events: function(adminService, $stateParams){
 					return adminService.getEvents($stateParams.page);
 				}

@@ -11,7 +11,9 @@
 			goTo: goTo,
 			goToEvents: goToEvents,
 			prevPage: prevPage,
-			nextPage: nextPage
+			nextPage: nextPage,
+			verify: verify,
+			logout: logout
 		};
 
 		function getCategories() {
@@ -68,6 +70,31 @@
 			$state.transitionTo($state.current, $stateParams, { 
   				reload: true, inherit: false, notify: true
 			});
+		}
+
+		function verify(){
+			var deferred = $q.defer();
+
+			$http({
+				method: 'GET',
+				url: '/admin/verify'
+			}).then(function(msg){
+				deferred.resolve(msg);
+			}).catch(function(err){
+				deferred.reject(err);
+				$state.go('login');
+			});
+
+			return deferred.promise;
+		}
+
+		function logout(){
+			$http({
+				method: 'GET',
+				url: '/admin/logout'
+			}).then(function(msg){
+				$state.go('login');
+			})
 		}
 	}
 })();

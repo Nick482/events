@@ -1,5 +1,24 @@
-.container {
-  md-content {
+md-content {
     height: 400px;
-  }
+}
+form.login-form {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	button {
+		border: none;
+		border-radius: 5px;
+	}
+	label {
+		text-align: center;
+	}
+	input {
+		border: none;
+		background-color: lightgrey;
+		border-radius: 5px;
+		height: 20px;
+		margin-bottom: 10px;
+	}
 }

@@ -9,5 +9,6 @@
 
 		vm.goTo = adminService.goTo;
 		vm.goToEvents = adminService.goToEvents;
+		vm.logout = adminService.logout;
 	}
 })();

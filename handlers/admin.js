@@ -3,11 +3,11 @@ var Admin = require('../models/Admin');
 
 function add(req, res, next){
 	var admin = new Admin(req.body);
-	admin.save().exec(function(err, admin){
+	admin.save(function(err, admin){
 		if(err){
 			return next(err);
 		}
-		res.status(201);
+		res.status(201).send('Success');
 	})
 }
 
@@ -17,7 +17,7 @@ function update(req, res, next){
 		if(err){
 			return next(err)
 		}
-	res.status(200);
+	res.status(200).send("Success");
 	});
 }
 
