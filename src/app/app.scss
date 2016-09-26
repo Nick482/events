@@ -21,7 +21,7 @@
 }
 .container {
   padding: 10px 10px 0;
-  background-color: lightgrey;
+  background-color: #CCCBC8;
   md-card {
     margin-left: 0;
   }
@@ -32,6 +32,9 @@
   menu{
     padding-left: 0;
     margin-bottom: 20px;
+    input {
+      height: 48px;
+    }
   }
   .home {
     margin-bottom: 20px;
