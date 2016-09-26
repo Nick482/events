@@ -1,15 +1,15 @@
 menu(layout='row')
-.events(layout='row')
-	md-content.events-list(flex-offset='5' flex='40')
+.search(flex='100')
+	md-input-container.input-container
+		label Search
+		input(ng-model='vm.searchText')
+	md-button(ng-click='vm.search()').md-raised Search
+.navigation(flex='100' ng-show='vm.showNav')
+	md-button(ng-click='vm.prevPage()').md-raised Previous Page
+	md-button(ng-click='vm.nextPage()').md-raised Next Page
+.events(layout='column' layout-gt-sm='row')
+	md-content.events-list(flex-offset-gt-sm='5' flex='100' flex-gt-sm='40')
 		h1 Events:
-		.search(flex='100')
-			md-input-container.input-container
-				label Search
-				input(ng-model='vm.searchText')
-			md-button(ng-click='vm.search()').md-raised Search
-		.navigation(flex='100')
-			md-button(ng-click='vm.prevPage()').md-raised Previous Page
-			md-button(ng-click='vm.nextPage()').md-raised Next Page
 		md-list
 			md-list-item(ng-click='vm.selectEvent(event, $event)' ng-repeat='event in vm.events')
 				i.material-icons.md-secondary(ng-click='vm.removeEvent(event)') close
@@ -20,7 +20,7 @@ menu(layout='row')
 				md-divider
 			md-list-item(ng-click="vm.addEvent({}, $event)")
 				i.material-icons add
-	md-content.sessions-list(flex='40' flex-offset='10')
+	md-content.sessions-list(flex-offset-gt-sm='10' flex='100' flex-gt-sm='40')
 		h1 Sessions:
 		md-list
 			md-list-item(ng-click='vm.selectSession()' ng-repeat='session in vm.sessions')

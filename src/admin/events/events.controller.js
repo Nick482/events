@@ -25,6 +25,7 @@
 		vm.search = function(){
 			eventsService.findEvents(vm.searchText, vm.page).then(function(events){
 				vm.events = events;
+				vm.showNav = true;
 			});
 		}
 
