@@ -6,7 +6,7 @@
 			label Search
 			input(ng-model='vm.searchText')
 		md-button(ng-click='vm.search()') Search
-	md-nav-bar.hide-sm.hide-xs(flex='100' layout='row')
+	md-nav-bar.hide-sm.hide-xs(flex='100' layout='row' layout-align="center end")
 		md-nav-item(aria-label='' flex='100' md-nav-click='vm.goTo("categories")') Browse
 		md-nav-item(aria-label='' flex='100' md-nav-click='vm.goTo("picker")') Picker
 		md-nav-item(aria-label='' flex='100' md-nav-click='vm.goTo("about")') About Us
