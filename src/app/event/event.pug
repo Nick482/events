@@ -1,7 +1,7 @@
-.event-body(layout='row' layout-xs='column')
-	.event-card(flex='70' flex-xs='100' layout='column')
+.event-body(layout-gt-sm='row' layout='column')
+	.event-card(flex='100' flex-gt-sm='70' layout='column')
 		h1.body-header
-		.event-card-info(layout='row' layout-xs='column')
+		.event-card-info(layout='column' layout-gt-xs='row')
 			.schedule(layout='column')
 				img(ng-src='{{vm.event.image}}')
 				md-list
@@ -20,7 +20,7 @@
 				button(ng-disabled='vm.inactiveEvent' ng-click='vm.openForm()').sign-up-button Sign Up
 				h3 Description:
 				p {{vm.event.description}}
-	.sign-up-form(flex='30' flex-xs='100' layout='column' ng-show='vm.showForm')
+	.sign-up-form(flex-gt-sm='30' layout='column' ng-show='vm.showForm')
 		form(name='userForm')
 			.name(layout='row')
 				md-input-container(flex='50')
