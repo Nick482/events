@@ -1,17 +1,44 @@
-.home(layout='row' layout-xs='column')
-  .home-body(flex='70' flex-xs='100' layout='column')
+.home(layout='column')
+  .home-body(flex='100' layout='column')
     .top(flex='100')
       h1.home-header Top Events
-      div.top-list-item.list-item(ng-repeat='event in vm.top' ng-click=' vm.goToEvent(event._id)')
-        span {{event.title}}
-        img(ng-src='{{event.image}}')
+      md-card.top-list-item.list-item(ng-repeat='event in vm.top')
+        md-card-title
+          md-card-title-text
+            span.md-headline {{event.title}}
+            span.md-subhead Where: {{event.place}}
+            span.md-subhead From: {{event.start | date: 'medium'}}
+            span.md-subhead To: {{event.end | date: 'medium'}}
+          md-card-title-media
+            .md-media-md.card-media
+              img(ng-src='{{event.image}}')
+        md-card-actions(layout='row' layout-align='end center')
+          md-button(ng-click=' vm.goToEvent(event._id)') View Event
     .closest(flex='100')
       h1.home-header Upcoming Events
-      div.closest-list-item.list-item(ng-repeat='event in vm.closest' ng-click=' vm.goToEvent(event._id)')
-        span {{event.title}}
-        img(ng-src='{{event.image}}')
-  .latest(flex-offset='10' flex='20' flex-xs='100' flex-offset-xs='0' layout='column')
-    h1.home-header Latest Events
-    div.latest-list-item.list-item(flex='100' ng-repeat='event in vm.latest' ng-click=' vm.goToEvent(event._id)')
-      span {{event.title}}
-      img(ng-src='{{event.image}}')
+      md-card.closest-list-item.list-item(ng-repeat='event in vm.top')
+        md-card-title
+          md-card-title-text
+            span.md-headline {{event.title}}
+            span.md-subhead Where: {{event.place}}
+            span.md-subhead From: {{event.start | date: 'medium'}}
+            span.md-subhead To: {{event.end | date: 'medium'}}
+          md-card-title-media
+            .md-media-md.card-media
+              img(ng-src='{{event.image}}')
+        md-card-actions(layout='row' layout-align='end center')
+          md-button(ng-click=' vm.goToEvent(event._id)') View Event
+    .latest(flex='100')
+      h1.home-header Latest Events
+      md-card.top-list-item.list-item(flex='100' ng-repeat='event in vm.top')
+        md-card-title
+          md-card-title-text
+            span.md-headline {{event.title}}
+            span.md-subhead Where: {{event.place}}
+            span.md-subhead From: {{event.start | date: 'medium'}}
+            span.md-subhead To: {{event.end | date: 'medium'}}
+          md-card-title-media
+            .md-media-md.card-media
+              img(ng-src='{{event.image}}')
+        md-card-actions(layout='row' layout-align='end center')
+          md-button(ng-click=' vm.goToEvent(event._id)') View Event

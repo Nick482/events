@@ -1,12 +1,18 @@
 .categories-body(layout='row')
-	.categories(flex='45')
+	.categories(flex='100' flex-gt-sm='45')
 		h2.home-header Categories
-		.category.list-item(ng-repeat='category in vm.categories' ng-click='vm.showSubcategories(category.subcategories)')
-			span.title() {{category.title}}
-			img(ng-src='{{category.image}}')
-	.subcategories(flex='45' flex-offset='10')
-		h2.home-header Subcategories
-		span.subcategory-hint(ng-hide='vm.subcategories') Select a category to view
-		.subcategory.list-item( ng-repeat='subcategory in vm.subcategories' ng-click='vm.viewEvents(subcategory._id)')
-			span.title {{subcategory.title}}
-			img(ng-src='{{subcategory.image}}')
+			md-card.category.list-item(ng-repeat='category in vm.categories')
+				md-card-header 
+					md-card-header-text
+						span.md-title {{category.title | uppercase}}
+				img.md-card-image(ng-src='{{category.image}}')
+				md-card-title
+				md-card-icon-actions
+					md-button.md-icon-button(aria-label='toggle' ng-click='vm.showSubcategories(category._id)')
+						i.material-icons keyboard_arrow_down
+				md-card-content(ng-show='vm[category._id]').subcategories-list
+					md-list
+						md-list-item.subcategory(ng-repeat='subcategory in category.subcategories' ng-click='vm.viewEvents(subcategory._id)')
+							img(ng-src='{{subcategory.image}}')
+							h3 {{subcategory.title | uppercase}}
+							md-divider

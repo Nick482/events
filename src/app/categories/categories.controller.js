@@ -6,9 +6,8 @@
 	/** @ngInject */
 	function categoriesCtrl(navigationService){
 		var vm = this;
-		// vm.categories = categories;
-		vm.showSubcategories = function(subcategories){
-			vm.subcategories = subcategories;
+		vm.showSubcategories = function(id){
+			vm[id] = !vm[id];
 		};
 		vm.viewEvents = navigationService.goToSubcategory;
 	}

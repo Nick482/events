@@ -1,12 +1,16 @@
 .subcategory-body
 	.navigation
 		button.prev(ng-click='vm.prevPage()' ng-disabled='{{vm.disablePrevButton}}') Previous Page
-		button.next(ng-click='vm.nextPage()') Next Page
-	.event.list-item(ng-repeat='event in vm.events' ng-click=' vm.goToEvent(event._id)')
-		span.event-title {{event.title}}
-		img(ng-src='{{event.image}}')
-		.event-info
-			span.event-info-title {{event.title}}
-			span.event-place {{event.place}}
-			span.event-date {{event.start | date:"dd/MM/yyyy"}}
-			span.free-seats {{event.freeSeats}}/{{event.limit}}
+		button.next(ng-click='vm.nextPage()' ng-disabled='{{vm.disableNextButton}}') Next Page
+	md-card.list-item(ng-repeat='event in vm.events' ng-click=' vm.goToEvent(event._id)')
+		md-card-title
+			md-card-title-text
+				span.md-headline {{event.title}}
+				span.md-subhead Where: {{event.place}}
+				span.md-subhead From: {{event.start | date: 'medium'}}
+				span.md-subhead To: {{event.end | date: 'medium'}}
+			md-card-title-media
+				.md-media-md.card-media
+					img(ng-src='{{event.image}}')
+		md-card-actions(layout='row' layout-align='end center')
+			md-button(ng-click=' vm.goToEvent(event._id)') View Event
