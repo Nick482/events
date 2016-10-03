@@ -66,7 +66,7 @@
 
 		$stateProvider
 		.state('event', {
-			url: '/event/{eventID}',
+			url: '/event/{eventID}/',
 			component: 'event',
 			resolve: {
 				event: function(eventService, $stateParams) {

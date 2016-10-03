@@ -1,5 +1,5 @@
 var express = require('express');
-var router = express();
+var router = express.Router();
 var users = require('./users');
 var admin = require('./admin');
 var events = require('./events');
@@ -8,17 +8,14 @@ var subcategories = require('./subcategories');
 var eventSessions = require('./eventSessions');
 var errorHandler = require('../handlers/error');
 var path = require('path');
-router.set('views', path.join(__dirname, '../dist/app'));
 
 require('../helpers/dbConnection');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('app', {title: 'Express'});
+  res.render('app/app', {title: 'Express'});
+  next();
 });
-router.post('/', function(req, res, next){
-	console.log(req.body);
-})
 
 router.use('/users', users);
 
@@ -33,6 +30,6 @@ router.use('/categories', categories);
 router.use('/subcategories', subcategories);
 
 router.use('/', function(req, res, next) {
-  res.render('app', {title: 'Express'});
+  res.render('app/app', {title: 'Express'});
 })
 module.exports = router;
